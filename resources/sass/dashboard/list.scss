@@ -1,0 +1,26 @@
+.item {position: relative;cursor: default;}
+.item > .row {cursor: pointer;display: flex;height: 32px;line-height: 32px;position: relative;padding: 0 8px 0 6px;border-left: 2px solid transparent;}
+.item.favorite > .row {border-color: $color-main;}
+.item > .row .icon {width: 32px;height: 32px;text-align: center;}
+.item > .row .icon:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;}
+.item > .row .name {flex-grow: 1;}
+.item .btn:before {font-size: 12px;}
+
+.item > .row:hover {background: #eee;}
+.item > .row:before {}
+
+.item-site > .row .icon:before {content: fa-content($fa-var-globe);color: #2a9d8f;}
+
+.item-email > .row .icon:before {content: fa-content($fa-var-envelope);color: #e9c46a;}
+
+.item-ssh .ip {display: inline-block;color: #ACADAF;margin-left: 8px;font-size: 11px;}
+.item-ssh > .row .icon:before {content: fa-content($fa-var-rectangle-terminal);color: #e76f51;}
+
+.item-note > .row .icon:before {content: fa-content($fa-var-note);color: #f4a261;}
+
+.item-password > .row .icon:before {content: fa-content($fa-var-key);color: #264653;}
+.item-password .name {user-select: text;}
+
+.item > .row > .password {margin-left: 8px;color: #ACADAF;}
+
+.item > .child {box-shadow: inset -1px 1px 8px rgb(0 0 0 / 10%);}

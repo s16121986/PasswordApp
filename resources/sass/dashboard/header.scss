@@ -1,0 +1,20 @@
+div.dashboard header {
+	background: #333;
+	z-index: 5;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+	padding: 8px 0;
+	.wrap {width: 100%;max-width: 400px;margin: 0 auto;position: relative;}
+	.search {display: flex;padding: 0 0 0 8px;border: 1px solid #ccc;background: #fff;border-radius: 3px;margin: 0 8px;}
+	input {flex-grow: 1;height: 30px;padding: 0;margin-right: 8px;border: none;background: none;}
+	.btn {font-size: 16px;height: 30px;}
+
+	div.tags {display: flex;color: #fff;flex-wrap: wrap;padding: 4px;}
+	div.tags > div {border-radius: 3px;font-size: 11px;padding: 0 8px;background: #888;margin: 4px;cursor: pointer;line-height: 20px;}
+	div.tags > div.selected {background: $color-main;}
+	div.tags > div:hover {opacity: .7;}
+	div.tags > div.favorite:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;content: fa-content($fa-var-bookmark);}
+	div.tags > div.archive:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;content: fa-content($fa-var-box-archive);}
+	div.tags > div span {display: inline-block;vertical-align: top;margin-left: 4px;color: #eee7;}
+}
+div.dashboard header.expanded {padding-bottom: 0;}
+div.dashboard header:not(.expanded) div.tags {display: none;}

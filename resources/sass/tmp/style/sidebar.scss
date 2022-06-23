@@ -1,0 +1,13 @@
+
+body {padding-left: 240px;}
+
+$sidebar-text: #F5FDFF;
+$sidebar-text-alt: #8B8E97;
+$sidebar-background: #43464F;
+$sidebar-background-alt: #616469;
+
+aside.sidebar {background: $sidebar-background;color: $sidebar-text;width: 240px;height: 100%;position: fixed;top: 0;left: 0;}
+
+aside.sidebar h2 {padding: 0 16px;font-weight: 500;font-size: 12px;color: $sidebar-text-alt;margin-bottom: 8px;margin-top: 16px;}
+aside.sidebar section.menu a {display: block;color: $sidebar-text;line-height: 32px;padding: 0 16px 0 40px;}
+aside.sidebar section.menu a:hover {background: $sidebar-background-alt;text-decoration: none;}

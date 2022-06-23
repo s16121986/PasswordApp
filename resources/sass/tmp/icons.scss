@@ -1,0 +1,360 @@
+@font-face {
+	font-family: "icomoon";
+	src: url("/fonts/icomoon/Linearicons-Free.eot?w118d");
+	src: url("/fonts/icomoon/Linearicons-Free.eot?#iefixw118d") format("embedded-opentype"),
+	url("/fonts/icomoon/Linearicons-Free.woff2?w118d") format("woff2"),
+	url("/fonts/icomoon/Linearicons-Free.woff?w118d") format("woff"),
+	url("/fonts/icomoon/Linearicons-Free.ttf?w118d") format("truetype"),
+	url("/fonts/icomoon/Linearicons-Free.svg?w118d#Linearicons-Free") format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: "icomoon" !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-filter:before {
+	content: "\e944";
+}
+
+.icon-ic-delete:before {
+	content: "\e945";
+}
+
+.icon-search-warning:before {
+	content: "\e946";
+}
+
+.icon-ic-location:before {
+	content: "\e942";
+}
+
+.icon-ic-hotel:before {
+	content: "\e943";
+}
+
+.icon-airport:before {
+	content: "\e903";
+}
+
+.icon-arrow-left:before {
+	content: "\e904";
+}
+
+.icon-arrow-right:before {
+	content: "\e93a";
+}
+
+.icon-garage:before {
+	content: "\e94c";
+}
+
+.icon-garden:before {
+	content: "\e94d";
+}
+
+.icon-transfer:before {
+	content: "\e94e";
+}
+
+.icon-ic-registration:before {
+	content: "\e94f";
+}
+
+.icon-ic-plus:before {
+	content: "\e902";
+}
+
+.icon-ic-minus:before {
+	content: "\e941";
+}
+
+.icon-ic-burger:before {
+	content: "\e92e";
+}
+
+.icon-ic-partners:before {
+	content: "\e920";
+}
+
+.icon-ic-arrow-left:before {
+	content: "\e940";
+}
+
+.icon-ic-mail:before {
+	content: "\e93b";
+}
+
+.icon-ic-phone:before {
+	content: "\e93c";
+}
+
+.icon-ic-arrow-right:before {
+	content: "\e93d";
+}
+
+.icon-ic-star:before {
+	content: "\e93e";
+}
+
+.icon-ic-quote:before {
+	content: "\e93f";
+}
+
+.icon-contact-floating-button .path1:before {
+	content: "\e900";
+	color: rgb(255, 255, 255);
+}
+
+.icon-contact-floating-button .path2:before {
+	content: "\e901";
+	margin-left: -1em;
+	color: rgb(0, 0, 0);
+}
+
+.icon-facebook:before {content: "\e903";}
+
+.icon-google:before {
+	content: "\e904";
+}
+
+.icon-ic-atm:before {
+	content: "\e905";
+}
+
+.icon-ic--other:before {
+	content: "\e906";
+}
+
+.icon-ic-baby .path1:before {
+	content: "\e907";
+	color: rgb(0, 0, 0);
+}
+
+.icon-ic-baby .path2:before {
+	content: "\e908";
+	margin-left: -1em;
+	color: rgb(0, 0, 0);
+}
+
+.icon-ic-baby .path3:before {
+	content: "\e909";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+
+.icon-ic-bed:before {
+	content: "\e90a";
+}
+
+.icon-ic-breakfast:before {
+	content: "\e90b";
+}
+
+.icon-ic-business:before {
+	content: "\e90c";
+}
+
+.icon-ic-cafe:before {
+	content: "\e90d";
+}
+
+.icon-ic-cars:before {
+	content: "\e90e";
+}
+
+.icon-ic-check:before {
+	content: "\e90f";
+}
+
+.icon-ic-close:before {
+	content: "\e910";
+}
+
+.icon-ic-entertainment:before {
+	content: "\e911";
+}
+
+.icon-ic-expand:before {
+	content: "\e912";
+}
+
+.icon-ic-experience:before {
+	content: "\e913";
+}
+
+.icon-ic-facebook:before {
+	content: "\e914";
+}
+
+.icon-ic-for-agencies:before {
+	content: "\e915";
+}
+
+.icon-ic-for-hotels:before {
+	content: "\e916";
+}
+
+.icon-ic-google:before {
+	content: "\e917";
+}
+
+.icon-ic-guest:before {
+	content: "\e918";
+}
+
+.icon-ic-health:before {
+	content: "\e919";
+}
+
+.icon-ic-hotels:before {
+	content: "\e91a";
+}
+
+.icon-ic-info:before {
+	content: "\e91b";
+}
+
+.icon-ic-list:before {
+	content: "\e91c";
+}
+
+.icon-ic-logout:before {
+	content: "\e91d";
+}
+
+.icon-ic-map:before {
+	content: "\e91e";
+}
+
+.icon-ic-parking:before {
+	content: "\e91f";
+}
+
+.icon-ic-pass-hide:before {
+	content: "\e921";
+}
+
+.icon-ic-pass-show:before {
+	content: "\e922";
+}
+
+.icon-ic-plan:before {
+	content: "\e923";
+}
+
+.icon-ic-shop:before {
+	content: "\e924";
+}
+
+.icon-ic-sport:before {
+	content: "\e925";
+}
+
+.icon-ic-tourists:before {
+	content: "\e926";
+}
+
+.icon-ic-tv:before {
+	content: "\e927";
+}
+
+.icon-ic-vk:before {
+	content: "\e928";
+}
+
+.icon-ic-wifi:before {
+	content: "\e929";
+}
+
+.icon-instagram:before {
+	content: "\e92a";
+}
+
+.icon-popup-message .path1:before {
+	content: "\e92b";
+}
+
+.icon-popup-message .path2:before {
+	content: "\e92c";
+	margin-left: -1em;
+	color: rgb(51, 51, 51);
+}
+
+.icon-popup-message .path3:before {
+	content: "\e92d";
+	margin-left: -1em;
+	color: rgb(51, 51, 51);
+}
+
+.icon-popup-pass-recovery .path1:before {
+	content: "\e92f";
+	opacity: 0.2;
+}
+
+.icon-popup-pass-recovery .path2:before {
+	content: "\e930";
+	margin-left: -1em;
+}
+
+.icon-popup-pass-recovery .path3:before {
+	content: "\e931";
+	margin-left: -1em;
+}
+
+.icon-popup-registration .path1:before {
+	content: "\e932";
+	opacity: 0.2;
+}
+
+.icon-popup-registration .path2:before {
+	content: "\e933";
+	margin-left: -1em;
+}
+
+.icon-popup-registration .path3:before {
+	content: "\e934";
+	margin-left: -1em;
+}
+
+.icon-popup-registration .path4:before {
+	content: "\e935";
+	margin-left: -1em;
+}
+
+.icon-popup-registration .path5:before {
+	content: "\e936";
+	margin-left: -1em;
+}
+
+.icon-user .path1:before {
+	content: "\e937";
+	opacity: 0.3;
+}
+
+.icon-user .path2:before {
+	content: "\e938";
+	margin-left: -1em;
+}
+
+.icon-user .path3:before {
+	content: "\e939";
+	margin-left: -1em;
+}
+
+.icon-vk:before {
+	content: "\e93a";
+}

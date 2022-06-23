@@ -1,0 +1,4 @@
+.popup {position: absolute;background: #fff;z-index: 20;border-radius: 4px;box-shadow: $shadow-popup;padding: 8px 0;user-select: none;}
+.popup > * {display: block;white-space: nowrap;padding: 0 16px 0 0;background-position: 12px 50%;background-repeat: no-repeat;line-height: 32px;color: $color-text;}
+.popup > *:hover {text-decoration: none;background-color: #ebebeb;}
+.popup hr {border: none;height: 1px;background: #efefef;margin: 4px 0px;}

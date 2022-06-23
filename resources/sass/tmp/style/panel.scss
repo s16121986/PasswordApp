@@ -1,0 +1,18 @@
+aside.control-panel {position: fixed;top: 0;left: 100%;width: 320px;height: 100%;transition: margin-left ease 0.3s;background: $color-white;box-shadow: $shadow-popup;}
+
+aside.control-panel h2{font-weight:normal;line-height:32px;border-bottom:1px solid $color-border;margin-bottom:16px;font-size:14px;}
+aside.control-panel h2:not(:first-child){margin-top:16px;}
+
+aside.control-panel.expanded {margin-left: -320px;}
+
+aside.control-panel div.btn-close {position: absolute;top: 16px;right: 16px;width: 32px;line-height: 32px;font-size: 24px;}
+aside.control-panel div.panel-title {padding: 16px 32px;font-size: 20px;line-height: 32px;}
+aside.control-panel div.panel-body {padding: 16px 32px;}
+
+aside.control-panel div.panel-buttons {padding: 16px 32px;position: absolute;left: 0;bottom: 0;width: 100%;border-top: 1px solid $color-border;display: flex;}
+aside.control-panel div.panel-buttons button {flex-grow: 1;}
+aside.control-panel div.panel-buttons button:not(:last-child) {margin-right: 16px;}
+
+aside.control-panel div.form-field {display: block;}
+aside.control-panel div.form-field > label {display: block;}
+aside.control-panel div.form-field > * {width: 100%;}

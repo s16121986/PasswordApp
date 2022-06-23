@@ -1,0 +1,23 @@
+{
+	"private": true,
+	"scripts": {
+		"dev": "npm run development",
+		"development": "mix",
+		"watch": "mix watch",
+		"watch-poll": "mix watch -- --watch-options-poll=1000",
+		"hot": "mix watch --hot",
+		"prod": "npm run production",
+		"production": "mix --production"
+	},
+	"dependencies": {
+		"gsv-sdk-core": "^1.0.4",
+		"jquery": "^3.6.0",
+		"jquery-ui": "^1.13.0"
+	},
+	"devDependencies": {
+		"laravel-mix": "^6.0.6",
+		"resolve-url-loader": "^4.0.0",
+		"sass": "^1.38.0",
+		"sass-loader": "^12.1.0"
+	}
+}

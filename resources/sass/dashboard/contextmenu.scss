@@ -1,0 +1,61 @@
+%color-yellow {border: 1px solid #ffa800;background: #fff4de;}
+%color-blue {border: 1px solid #6993ff;background: #e1e9ff;}
+%color-green {border: 1px solid #1bc5bd;background: #c9f7f5;}
+%color-red {border: 1px solid #f64e60;background: #ffe2e5;}
+
+.list-menu {
+	font-size: 12px;
+	line-height: 32px;
+	color: $color-text;
+	position: absolute;
+	background: #fff;
+	z-index: 20;
+	border-radius: 2px;
+	box-shadow: $shadow-popup;
+	padding: 8px 0;
+	user-select: none;
+
+	.list-menu {position: absolute;top: 0;left: 100%;min-width: 120px;}
+
+	.item {position: relative;}
+	.item:not(:hover) > .list-menu {display: none;}
+
+	.item-wrap {display: flex;white-space: nowrap;padding: 0 16px 0 0;}
+	.item-wrap:hover {text-decoration: none;background-color: #ebebeb;}
+	.item-wrap > i { position: absolute; width: 0; height: 0; top: 12px; right: 14px; border-left: 4px solid #333; border-top: 4px solid transparent; border-bottom: 4px solid transparent;}
+
+	.item.checked > .item-wrap {
+		background-image: url("data:image/svg+xml,%3Csvg class='svg' width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.176 2.824L3.06 4.706 6.824.941 8 2.118 3.059 7.059 0 4l1.176-1.176z' fill-rule='evenodd' fill-opacity='1' fill='%23000' stroke='none'%3E%3C/path%3E%3C/svg%3E"); background-position: 90% 50%; background-repeat: no-repeat; }
+
+	hr {border: none;height: 1px;background: #efefef;margin: 4px 0px;}
+
+	.icon:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;width: 32px;height: 32px;display: inline-block;text-align: center;}
+	.site .icon:before {content: fa-content($fa-var-globe);}
+	.ssh .icon:before {content: fa-content($fa-var-rectangle-terminal);}
+	.email .icon:before {content: fa-content($fa-var-envelope);}
+	.note .icon:before {content: fa-content($fa-var-note);}
+	.password .icon:before {content: fa-content($fa-var-key);}
+	.favorite .icon:before {content: fa-content($fa-var-bookmark);}
+	.archive .icon:before {content: fa-content($fa-var-box-archive);}
+	.tags .icon:before {content: fa-content($fa-var-tags);}
+	.tag .icon:before {content: fa-content($fa-var-tag);}
+	.export .icon:before {content: fa-content($fa-var-download);}
+	.import .icon:before {content: fa-content($fa-var-upload);}
+	.edit .icon:before {content: fa-content($fa-var-pen-to-square);}
+	.delete .icon:before {content: fa-content($fa-var-trash);}
+	//.database {background-image: url("/images/ui/database.png");}
+}
+
+
+.item .list-menu {top: 0;right: 32px;}
+
+//.list-menu .colors {display: flex;padding: 0 8px 0 32px;background: url("/images/ui/paint-palette.png") 12px 50% no-repeat;}
+.list-menu .colors a {display: block;width: 32px;height: 32px;border-radius: 4px;padding: 8px;opacity: .5;}
+.list-menu .colors a:hover {opacity: 1;}
+.list-menu .colors a:before {content: "";display: block;width: 16px;height: 16px;border-radius: 50%;}
+.list-menu .colors a.yellow:before {@extend %color-yellow;}
+.list-menu .colors a.blue:before {@extend %color-blue;}
+.list-menu .colors a.green:before {@extend %color-green;}
+.list-menu .colors a.red:before {@extend %color-red;}
+
+.mainmenu {display: none; right: 8px; top: 100%;margin-top: 4px; width: 152px;}

@@ -1,0 +1,83 @@
+@import "../main";
+
+%color-yellow {border: 1px solid #ffa800;background: #fff4de;}
+%color-blue {border: 1px solid #6993ff;background: #e1e9ff;}
+%color-green {border: 1px solid #1bc5bd;background: #c9f7f5;}
+%color-red {border: 1px solid #f64e60;background: #ffe2e5;}
+
+div.projects-view {}
+
+div.data-items {line-height: 20px;margin-top: 16px;}
+div.data-items a {color: $color-text;}
+div.data-items .spacer {flex-grow: 1;}
+div.data-items .title-wrap {position: relative;}
+div.data-items .title-wrap .popup {top: 100%;left: 0;}
+div.data-items h2 {font-weight: 500;font-size: 13px;margin-bottom: 8px;letter-spacing: 0.5px;}
+div.data-items h2:before {content: "";display: inline-block;width: 16px;height: 20px;margin-right: 8px;background-repeat: no-repeat;background-position: 50% 50%;vertical-align: top;}
+div.data-items > .items {display: flex;flex-wrap: wrap;}
+div.data-items .item {position: relative;margin: 4px;flex-grow: 1;}
+div.data-items .item:not(:last-child) {}
+div.data-items .item .name {cursor: pointer;}
+div.data-items div.item:not(.expanded) div.item-body {display: none;}
+div.data-items div.item-body {position: absolute; display: block; top: 100%; left: 0;padding: 8px 16px; box-shadow: 1px 1px 5px rgb(102 102 102 / 30%); background-color: rgba(255, 255, 255, .98); margin-left: -1px; border-radius: 4px;min-width: 100%;white-space: pre-wrap;margin-top: 5px;z-index: 15;}
+div.data-items div.actions-menu {margin-left: 8px;}
+div.data-items div.actions-menu > .icon {width: 20px;height: 20px;background: url("/images/ui/menu.png") 50% 50% no-repeat;opacity: .3;}
+div.data-items div.actions-menu:hover > .icon {opacity: 1;}
+
+div.data-items div.head {position: relative;display: flex;border-radius: 4px;padding: 8px 8px 8px 16px;@extend %color-yellow;}
+div.data-items .item.color-blue div.head {@extend %color-blue;}
+div.data-items .item.color-green div.head {@extend %color-green;}
+div.data-items .item.color-red div.head {@extend %color-red;}
+div.data-items div.head .name {white-space: nowrap;}
+
+div.password-item {display: flex;}
+div.password-item:not(:last-child) {margin-bottom: 8px;}
+
+div.ssh-item .head {}
+div.ssh-item .ip {color: #ACADAF;margin-right: 8px;}
+
+div.note-item .item-body {white-space: pre-wrap;}
+div.site-item div.head > a {display: block;width: 20px;height: 20px;background: url("/images/ui/external-link.png") 50% 50% no-repeat;opacity: .3;margin-left: 8px;}
+div.site-item div.head > a:hover {opacity: 1;}
+
+.x-copy {cursor: pointer;}
+
+.app-state {line-height: 20px;position: fixed;bottom: 0;right: 0;background: #fff;box-shadow: $shadow-popup;padding: 4px 8px;border-radius: 4px 0 0 0;font-size: 12px;}
+.app-state:before {content: "";display: inline-block;vertical-align: top;width: 20px;height: 20px;margin-right: 8px;background: url("/images/ui/copy-to-clipboard.png") 50% 50% no-repeat;}
+.app-state:after {background-size: 16px 16px;}
+
+.data-sites h2:before {background-image: url("/images/icons/geography.png");}
+.data-ssh h2:before {background-image: url("/images/icons/console.png");}
+.data-emails h2:before {background-image: url("/images/icons/secured-letter.png");}
+.data-notes h2:before {background-image: url("/images/icons/note.png");}
+.data-databases h2:before {background-image: url("/images/icons/database.png");}
+
+.btn-password {width: 20px;height: 20px;background: url("/images/ui/password.png") 50% 50% no-repeat;cursor: pointer;margin-left: 6px;}
+
+div.h1-wrap {display: flex;}
+div.h1-wrap h1 {font-weight: 600;letter-spacing: .5px;line-height: 24px;}
+div.h1-wrap .actions-menu {margin-left: 16px;}
+div.h1-wrap .actions-menu > .icon {width: 24px;height: 24px;background: url("/images/ui/menu-vertical.png") 50% 50% no-repeat;}
+
+.actions-menu {position: relative;}
+.actions-menu > .icon {cursor: pointer;}
+.actions-menu .popup {top: 100%;right: 0;}
+
+
+.popup a.site {background-image: url("/images/ui/geography.png");}
+.popup a.ssh {background-image: url("/images/ui/ssh.png");}
+.popup a.email {background-image: url("/images/ui/secured-letter.png");}
+.popup a.note {background-image: url("/images/ui/note.png");}
+.popup a.password {background-image: url("/images/ui/password.png");}
+.popup a.database {background-image: url("/images/ui/database.png");}
+.popup a.edit {background-image: url("/images/ui/pencil.png");}
+.popup a.delete {background-image: url("/images/ui/delete.png");}
+
+.popup .colors {display: flex;padding: 0 8px 0 32px;background: url("/images/ui/paint-palette.png") 12px 50% no-repeat;}
+.popup .colors a {display: block;width: 32px;height: 32px;border-radius: 4px;padding: 8px;opacity: .5;}
+.popup .colors a:hover {opacity: 1;}
+.popup .colors a:before {content: "";display: block;width: 16px;height: 16px;border-radius: 50%;}
+.popup .colors a.yellow:before {@extend %color-yellow;}
+.popup .colors a.blue:before {@extend %color-blue;}
+.popup .colors a.green:before {@extend %color-green;}
+.popup .colors a.red:before {@extend %color-red;}

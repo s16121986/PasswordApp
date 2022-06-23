@@ -1,0 +1,17 @@
+@import "main";
+
+div.default-items {display: flex;flex-direction: column;line-height: 16px;}
+div.default-items h2 {font-weight: normal;font-size: 12px;}
+div.default-items > div.entity-row {border-radius: 8px;box-shadow: $shadow;padding: 16px;border: 1px solid #ACADAF;}
+div.default-items > div.entity-row:not(:last-child) {margin-bottom: 32px;}
+
+div.entity-data {display: flex;}
+div.entity-row {position: relative;}
+div.entity-row div.menu {position: absolute;top: 16px;right: 16px;flex-grow: 1;}
+div.entity-row div.menu div.popup {position: absolute;top: 0;right: 0;background: #fff;border-radius: 6px;box-shadow: $shadow-popup;display: none;z-index: 20;}
+div.entity-row div.menu div.popup a {line-height: 32px;padding: 0 16px;white-space: nowrap;display: block;}
+
+div.entity-row div.entity {margin-top: 16px;}
+
+div.ssh-row .main .name {font-weight: 500;}
+div.ssh-row .main .ip {color: #ACADAF;font-size: 12px;}

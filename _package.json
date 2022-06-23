@@ -1,0 +1,19 @@
+{
+	"private": true,
+	"scripts": {
+		"dev": "npm run development",
+		"development": "mix",
+		"watch": "mix watch",
+		"watch-poll": "mix watch -- --watch-options-poll=1000",
+		"hot": "mix watch --hot",
+		"prod": "npm run production",
+		"production": "mix --production"
+	},
+	"dependencies": {
+		"corejs-stdlib": "git+ssh://git@github.com:s16121986/corejs-stdlib.git",
+		"corejs-form": "git+ssh://git@github.com:s16121986/corejs-stdlib.git"
+	},
+	"devDependencies": {
+		//"laravel-mix": "^6.0.6"
+	}
+}

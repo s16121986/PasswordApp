@@ -1,0 +1,64 @@
+.btn-close {cursor: pointer;opacity: .8;font-family: icomoon;text-align: center;}
+.btn-close:before {content: "\e870";}
+.btn-close:hover {opacity: 1;}
+
+.btn {border-radius: 3px;height: 32px;padding: 0 16px;border: none;text-decoration: none;display: inline-block;cursor: pointer;}
+
+.btn-submit,
+.btn-info,
+.btn-alert,
+.btn-empty {color: #fff;}
+
+.btn-secondary {color: #464e5f;}
+
+.btn-delete,
+.btn-cancel,
+.btn-default {border: 1px solid $color-border;color: $color-text;}
+
+a.btn {line-height: 30px;text-align: center;}
+
+a.btn-delete,
+a.btn-cancel,
+a.btn-default {line-height: 28px;}
+
+.btn-submit {background-color: $color-submit;}
+
+.btn-delete {}
+
+.btn-secondary {background-color: $color-secondary;}
+
+.btn-info {background-color: $color-info;}
+
+.btn-alert {background-color: $color-alert;}
+
+.btn-empty {color: $color-submit;font-weight: bold;background: transparent;}
+
+.btn-submit:hover,
+.btn-secondary:hover,
+.btn-info:hover,
+.btn-alert:hover,
+.btn-upload:hover {box-shadow: $shadow-hover;}
+
+.btn-empty:hover {background: var(--empty);}
+
+.btn-cancel:hover,
+.btn-default:hover {color: $color-main;border-color: $color-main;}
+
+.btn-delete:hover {color: $color-error;border-color: $color-error;}
+
+a.btn:hover {text-decoration: none;}
+
+.btn-submit:active,
+.btn-delete:active,
+.btn-secondary:active,
+.btn-info:active,
+.btn-alert:active,
+.btn-cancel:active,
+.btn-upload:active,
+.btn-empty:active {box-shadow: inset 1px 1px 3px rgba(4, 19, 32, 0.21);}
+
+.btn-submit:disabled,
+.btn-delete:active,
+.btn-alert:disabled,
+.btn-cancel:disabled,
+.btn-empty:disabled {box-shadow: none;opacity: 0.6;filter: alpha(opacity=60);-moz-opacity: 0.6;cursor: default;background-color: #c3bfbe;}
