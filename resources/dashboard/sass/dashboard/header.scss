@@ -18,3 +18,4 @@ div.dashboard header {
 }
 div.dashboard header.expanded {padding-bottom: 0;}
 div.dashboard header:not(.expanded) div.tags {display: none;}
+div.dashboard header.fixed {position: fixed;left: 0;top: 0;width: 100%;}

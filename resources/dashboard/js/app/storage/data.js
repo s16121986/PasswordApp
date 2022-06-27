@@ -7,7 +7,6 @@ import Note from "../model/note";
 import Sync from "./sync";
 
 let collections;
-let emptyFlag = true;
 
 const modelAssoc = {
 	site: 'sites',
@@ -28,11 +27,13 @@ function parseData(data) {
 
 async function retrieveData() {
 	let data = sessionStorage.getItem('data');
+	//data = decodeURIComponent(escape(atob(data)));
+	//sessionStorage.setItem('data', data);
 	if (data)
 		return parseData(data);
 
-	data = await app('data').sync.get('data');
-	//console.log(data);
+	//data = localStorage.getItem('data');
+	data = await app('data').sync.get();
 	if (!data)
 		return;
 
@@ -43,7 +44,6 @@ async function retrieveData() {
 }
 
 export default class Data {
-
 	constructor() {
 		collections = {
 			sites: new Collection(),
@@ -74,8 +74,10 @@ export default class Data {
 	setData(data) {
 		this.clear();
 
-		if (!data)
+		if (!data) {
+			this.trigger('update');
 			return;
+		}
 
 		const factories = {
 			sites: Site,
@@ -88,6 +90,8 @@ export default class Data {
 			const c = collections[i];
 			(data[i] || []).forEach(r => c.add(new factories[i](r)));
 		}
+
+		this.trigger('update');
 	}
 
 	async store() {
@@ -99,13 +103,15 @@ export default class Data {
 
 		sessionStorage.setItem('data', content);
 
-		await this.sync.set('data', content);
+		await this.sync.set(content);
 
 		this.trigger('store');
 	}
 
 	async load() {
 		const data = await retrieveData();
+		if (!data)
+			return;
 
 		this.setData(data);
 

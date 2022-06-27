@@ -15,5 +15,5 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="css/index.css"/>
 	<script type="text/javascript" defer src="js/index.js" charset="utf-8"></script>
 </head>
-<body class="loading"></body>
+<body class=""></body>
 </html>

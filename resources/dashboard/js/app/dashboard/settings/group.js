@@ -12,7 +12,7 @@ export default class Group {
 	}
 
 	action(params) {
-		const el = $('<div class="' + params.cls + '">' + params.text + '</div>');
+		const el = $('<div class="item ' + params.cls + '">' + params.text + '</div>');
 
 		el.click(e => params.handler.call(el, params));
 

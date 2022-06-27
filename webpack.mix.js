@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const rootPath = process.env.PWD;
 const resourcesPath = rootPath + '/resources';
-const publicPath = 'public';
+//const publicPath = 'public';
 const extensionPath = 'chrome-extension/PasswordApp';
 
 mix.alias({
@@ -47,6 +47,7 @@ const mixPath = function (resourcesPath, publicPath, mixMethod) {
 mixPath('resources/dashboard/js', 'public/js', 'js');
 mixPath('resources/dashboard/sass', 'public/css', 'sass');
 
-mix.js('resources/chrome-extension/js/background.js', extensionPath);
 mixPath('resources/chrome-extension/js', extensionPath + '/js', 'js');
 mixPath('resources/chrome-extension/sass', extensionPath + '/css', 'sass');
+
+const x = mix.js('resources/chrome-extension/js/background.js', extensionPath);

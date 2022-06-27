@@ -9,7 +9,12 @@ let inputSettings;
 let history;
 
 export default class Dialog extends Popup {
-	constructor() {super({cls: 'password-generator'});}
+	constructor() {
+		super({
+			title: 'Генератор паролей',
+			cls: 'password-generator'
+		});
+	}
 
 	boot(el, body) {
 		const sl = function (name, text) {

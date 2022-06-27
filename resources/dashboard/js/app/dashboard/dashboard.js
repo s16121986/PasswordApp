@@ -3,7 +3,6 @@ import Site from "./items/site";
 import Ssh from "./items/ssh";
 import Email from "./items/email";
 import Note from "./items/note";
-import Settings from "./settings/dialog";
 
 let items = [];
 
@@ -37,8 +36,6 @@ export default class Dashboard {
 
 		this.#el.append(this.#header.el);
 		this.#content = $('<section></section>').appendTo(this.#el);
-
-		this.settings = new Settings();
 	}
 
 	get content() { return this.#content; }
@@ -112,6 +109,7 @@ export default class Dashboard {
 
 		items.forEach(item => {
 			const model = item.model;
+
 			if (hasTags(model)
 				&& hasTerm(model)
 				&& isFavorite(model)

@@ -41,6 +41,8 @@ export default class Sync {
 				if (!items[key + '_0'])
 					return;
 
+				console.log('Sync data found');
+
 				let i = 0;
 				let data = '';
 				do {

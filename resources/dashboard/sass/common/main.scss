@@ -2,3 +2,9 @@
 @import "variables";
 
 .unselectable {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;user-select: none;}
+
+@mixin ui-scrollbar($el) {
+	#{$el}::-webkit-scrollbar {width: 8px;}
+	#{$el}::-webkit-scrollbar-track {background: #EDEDED;}
+	#{$el}::-webkit-scrollbar-thumb {background-color: #A6A6A6;}
+}

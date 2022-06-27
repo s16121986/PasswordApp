@@ -5,6 +5,7 @@ import Encoder from "./encrypt/key";
 import EncryptKey from "./storage/key";
 import PasswordGenerator from "./dashboard/services/password-renerator/dialog";
 import Progressbar from "./dashboard/ui/progressbar";
+import SettingsDialog from "./dashboard/settings/dialog";
 
 let instance;
 let instances = {};
@@ -30,5 +31,6 @@ export default class Application {
 		instances.encoder = new Encoder();
 		instances['password-generator'] = new PasswordGenerator();
 		instances.progressbar = new Progressbar();
+		instances.settings = new SettingsDialog();
 	}
 }

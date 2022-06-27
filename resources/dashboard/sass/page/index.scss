@@ -7,4 +7,8 @@
 body {font-size: 13px;color: $color-text;display: flex;flex-direction: column;background: #f9f9f9;min-width: 320px;}
 body, input, textarea, select, button {font-family: "Open Sans", sans-serif;font-weight: 300;}
 
+@include ui-scrollbar("body");
+
 @import "../dashboard/main";
+@import "../services/password-generator";
+@import "../services/settings";

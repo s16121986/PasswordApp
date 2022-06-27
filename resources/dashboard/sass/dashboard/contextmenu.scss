@@ -41,6 +41,8 @@
 	.tag .icon:before {content: fa-content($fa-var-tag);}
 	.export .icon:before {content: fa-content($fa-var-download);}
 	.import .icon:before {content: fa-content($fa-var-upload);}
+	.settings .icon:before {content: fa-content($fa-var-gear);}
+	.key .icon:before {content: fa-content($fa-var-key);}
 	.edit .icon:before {content: fa-content($fa-var-pen-to-square);}
 	.delete .icon:before {content: fa-content($fa-var-trash);}
 	//.database {background-image: url("/images/ui/database.png");}

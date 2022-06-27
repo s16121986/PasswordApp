@@ -6,12 +6,16 @@ class Local {
 	get() { return localStorage.getItem(dataKey); }
 
 	set(data) { localStorage.setItem(dataKey, data); }
+
+	exists() { return !!localStorage.getItem(dataKey); }
 }
 
 class Remote {
 	async set(data) { return await app('broadcast').send('data-store', data); }
 
 	async get() { return await app('broadcast').send('data-read'); }
+
+	async exists() { return await app('broadcast').send('data-exists'); }
 }
 
 export default class Sync {
@@ -36,4 +40,6 @@ export default class Sync {
 
 		return await encoder.decrypt(encrypted);
 	}
+
+	async exists() { return await this.storage.exists(); }
 }

@@ -12,8 +12,9 @@ export default async function (data) {
 	//	throw new CryptKeyUndefined();
 
 	//const encrypted = await encoder.encrypt(data);
-
 	await storage.store('data', data);
+
+	console.log('Data stored to sync');
 
 	return true;
 

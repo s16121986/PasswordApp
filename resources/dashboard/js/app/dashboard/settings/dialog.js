@@ -1,11 +1,17 @@
 import Group from "./group";
-import keyDialog from "./actions/key-dialog";
 import Popup from "@ui/popup";
 import CryptKeyDialog from "../dialogs/crypt-key";
 import DataImportDialog from "../dialogs/data-import";
 import DataExport from "./actions/data-export"
 
 export default class Dialog extends Popup {
+	constructor() {
+		super({
+			title: 'Настройки',
+			cls: 'app-settings'
+		});
+	}
+
 	action(action) {
 
 	}

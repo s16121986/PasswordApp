@@ -32,7 +32,7 @@ export default class Header {
 		const el = $('<header>'
 			+ '<div class="wrap">'
 			+ '<div class="search">'
-			+ '<input type="text" placeholder="Быстрый поиск" value="' + (this.#filters.term || '') + '" />'
+			+ '<input type="text" autocomplete="off" placeholder="Быстрый поиск" value="' + (this.#filters.term || '') + '" />'
 			+ '<div class="btn btn-filter"></div>'
 			+ '<div class="btn btn-menu" title="Главное меню"></div>'
 			+ '</div>'
@@ -61,6 +61,7 @@ export default class Header {
 				el.removeClass('expanded');
 			else
 				el.addClass('expanded');
+			el.trigger('resize');
 		});
 
 		el.find('div.btn-menu').click(e => {
