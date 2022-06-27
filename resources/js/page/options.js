@@ -18,6 +18,12 @@ $(document).ready(async function () {
 		await app('data').load();
 	}
 
+	const dataExists = await app('data').sync.exists();
+
+	app('dataState', {
+		loaded: !app('data').isEmpty(),
+		exists: dataExists
+	});
 	app('keyImport', new KeyImport());
 	app('dataImport', new DataImport());
 	app('dataExport', new DataExport());

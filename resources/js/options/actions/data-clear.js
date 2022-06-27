@@ -1,6 +1,9 @@
 export default async function clearData() {
+	setLoading(true);
+
 	app('data').clear();
-	app('data').store();
+
+	await app('data').store();
 
 	reload();
 }

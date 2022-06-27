@@ -22,3 +22,6 @@ button:disabled {opacity: .4;cursor: default;}
 button:hover:not(:disabled) {opacity: .8;}
 
 #btn-key {margin-left: 8px;}
+
+div.msg {}
+div.msg.error {color: red;}

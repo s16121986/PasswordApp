@@ -1,10 +1,15 @@
 import download from "@support/export";
 
 export default async function exportData() {
-	const filename = 'password.txt';
-	const data = app('data').toString();
+	setLoading(true);
 
-	const encrypted = await app('encoder').encrypt(data);
+	const filename = 'password.txt';
+	//const data = app('data').toString();
+	//const encrypted = await app('encoder').encrypt(data);
+	const syncStorage = app('data').sync.storage;
+	const encrypted = await syncStorage.get();
 
 	download(encrypted, filename, 'text/plain');
+
+	setLoading(false);
 }

@@ -6,13 +6,21 @@ function readFile(file) {
 	});
 }
 
-export default async function importData(file, key) {
-	if (key && key !== app('currentKey')) {
+async function importKey(key) {
+	if (key && key !== app('currentKey'))
 		await app('encoder').importKey(key);
-		await app('encryptKey').store();
-	}
 
 	if (!app('encoder').hasKey())
+		return false;
+
+	await app('encryptKey').store();
+
+	return true;
+}
+
+async function _import(file, key) {
+	const keyFlag = await importKey(key);
+	if (!keyFlag)
 		throw 'Encrypt key required';
 
 	const encodedData = await readFile(file);
@@ -34,4 +42,15 @@ export default async function importData(file, key) {
 	await app('data').store();
 
 	reload();
+}
+
+export default async function importData(file, key) {
+	setLoading(true);
+
+	try {
+		await _import(file, key);
+	} catch (e) {
+		setLoading(false);
+		error(e);
+	}
 }

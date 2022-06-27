@@ -1,13 +1,27 @@
 import "../common"
 import "../plugins/fixedHeader"
-import CryptKeyDialog from "../dashboard/dialogs/crypt-key";
 import Application from "../app/app";
 import Dashboard from "../dashboard/dashboard";
 import PasswordGenerator from "../dashboard/services/password-renerator/dialog";
 import Progressbar from "../dashboard/ui/progressbar";
 
+const extensionId = chrome.runtime.id;
+
 $(document).ready(async function () {
 	new Application();
+
+	const key = app('encryptKey');
+
+	await key.load();
+
+	if (key.exists()) {
+		console.log(chrome.runtime);
+		if (extensionId)
+			chrome.runtime.openOptionsPage();
+		else
+			window.open('options.html');
+		return;
+	}
 
 	app('dashboard', new Dashboard());
 	app('password-generator', new PasswordGenerator());
@@ -18,17 +32,7 @@ $(document).ready(async function () {
 
 	app('dashboard').setLoading(true);
 
-	const key = app('encryptKey');
-
-	await key.load();
-
-	if (key.exists())
-		await app('data').load();
-	else {
-		const dataExists = await app('data').sync.exists();
-		if (dataExists)
-			CryptKeyDialog();
-	}
+	await app('data').load();
 
 	app('dashboard').setLoading(false);
 

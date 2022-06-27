@@ -100,11 +100,7 @@ export default class Data {
 
 			await this.sync.clear();
 		} else {
-			const data = this.serialize();
-
-			data.updated_at = (new Date()).getTime();
-
-			const content = JSON.stringify(data);
+			const content = this.toString();
 
 			sessionStorage.setItem('data', content);
 

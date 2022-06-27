@@ -44,7 +44,12 @@ export default class Sync {
 		if (!encrypted)
 			return null;
 
-		return await encoder.decrypt(encrypted);
+		try {
+			return await encoder.decrypt(encrypted);
+		} catch (e) {
+			console.error(e);
+			return null;
+		}
 	}
 
 	async clear() { return await this.storage.clear(); }

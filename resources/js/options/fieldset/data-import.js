@@ -10,13 +10,7 @@ export default class DataImport {
 			.change(e => { this.update(); });
 
 		this.btn = $('#btn-import')
-			.click(e => {
-				setLoading(true);
-				try {
-					importData(this.file, this.key);
-				} catch (e) { error(e); }
-				setLoading(false);
-			});
+			.click(e => { importData(this.file, this.key); });
 	}
 
 	get key() { return this.keyInput.val(); }

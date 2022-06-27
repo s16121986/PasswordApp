@@ -4,14 +4,11 @@ export default class DataClear {
 	constructor() {
 		this.btn = $('#btn-clear')
 			.click(async e => {
-				setLoading(true);
-
-				await clearData();
-
-				setLoading(false);
+				if (confirm('Конфигурация будет безвозвратно удалена! Продолжить?'))
+					clearData();
 			});
 
-		if (!app('data').isEmpty())
+		if (app('dataState').exists)
 			this.btn.removeAttr('disabled');
 	}
 }

@@ -17,6 +17,18 @@ export default class KeyImport {
 
 			setLoading(false);
 		});
+
+		(async () => {
+			const wrap = this.input.parent().parent();
+
+			wrap.addClass('loading');
+
+			const dataState = app('dataState');
+			if (dataState.exists && !dataState.loaded)
+				wrap.append('<div class="msg error">Не удалось получить данные синхронизации, некорректный ключ</div>');
+
+			wrap.removeClass('loading');
+		})();
 	}
 
 	get key() { return this.input.val(); }
