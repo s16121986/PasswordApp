@@ -1,6 +1,9 @@
 import Group from "./group";
 import keyDialog from "./actions/key-dialog";
 import Popup from "@ui/popup";
+import CryptKeyDialog from "../dialogs/crypt-key";
+import DataImportDialog from "../dialogs/data-import";
+import DataExport from "./actions/data-export"
 
 export default class Dialog extends Popup {
 	action(action) {
@@ -20,7 +23,7 @@ export default class Dialog extends Popup {
 			.action({
 				text: 'Ключ шифрования',
 				cls: 'key',
-				handler: keyDialog
+				handler: CryptKeyDialog
 			});
 
 		addGroup('Данные')
@@ -28,12 +31,12 @@ export default class Dialog extends Popup {
 				text: 'Экспортировать',
 				cls: 'export',
 				disabled: data.isEmpty(),
-				handler: () => {}
+				handler: DataExport
 			})
 			.action({
 				text: 'Импортировать',
 				cls: 'import',
-				handler: () => {}
+				handler: DataImportDialog
 			});
 	}
 

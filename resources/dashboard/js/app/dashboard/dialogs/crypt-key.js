@@ -1,6 +1,6 @@
 import Form from "@ui/form/form";
 
-export default function () {
+export default function CryptKeyDialog() {
 	//const keyExists = app('cryptKey').exists();
 	const form = new Form({
 		title: 'Ключ шифрования',
@@ -13,9 +13,14 @@ export default function () {
 			if (app('encoder').hasKey()) {
 				await app('cryptKey').store();
 
-				//await app('data').store();
+				app('dashboard').setLoading(true);
 
 				form.hide();
+
+				await app('data').load();
+				//await app('data').store();
+
+				app('dashboard').setLoading(false);
 			} else {
 
 				form.setLoading(false);
@@ -26,9 +31,4 @@ export default function () {
 	form.password('key', {label: 'Ключ'});
 
 	form.show();
-}
-() => {
-	//показать
-	//сгенерировать
-	//изменить
 }

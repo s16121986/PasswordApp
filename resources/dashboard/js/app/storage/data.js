@@ -133,6 +133,8 @@ export default class Data {
 		}
 		return data;
 	}
+
+	toString() { return JSON.stringify(this.serialize()); }
 }
 
 Object.assign(Data.prototype, EventsTrait);

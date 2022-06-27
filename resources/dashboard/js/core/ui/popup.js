@@ -9,6 +9,8 @@ export default class Popup {
 	#params;
 
 	constructor(params) {
+		params = Object.assign({}, params);
+
 		this.#params = params;
 
 		if (params.visible)

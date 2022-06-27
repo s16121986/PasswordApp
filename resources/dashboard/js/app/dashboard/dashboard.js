@@ -123,4 +123,5 @@ export default class Dashboard {
 		});
 	}
 
+	setLoading(flag) { $(document.body)[flag ? 'addClass' : 'removeClass']('loading'); }
 }

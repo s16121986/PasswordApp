@@ -1,21 +1,24 @@
 function copy(text, successText) {
 	if (navigator.clipboard) {
-		const stateEl = $('<div class="app-state copied loading">Копирование</div>').appendTo(document.body);
+		app('progressbar').show({
+			cls: 'copy',
+			text: 'Копирование',
+			loading: true
+		});
 
 		navigator.clipboard.writeText(text)
 			.then(() => {
-				stateEl
-					.removeClass('loading')
-					.addClass('success')
-					.html(successText || 'Скопировано');
-				window.setTimeout(function () { stateEl.fadeOut(); }, 1000);
+				app('progressbar').show({
+					cls: 'copied',
+					text: successText || 'Скопировано',
+					timeout: 2000
+				});
 			})
 			.catch(err => {
-				stateEl
-					.removeClass('loading')
-					.addClass('error');
-				window.setTimeout(function () { stateEl.fadeOut(); }, 1000);
-				console.log(err);
+				app('progressbar').error({
+					timeout: 2000
+				});
+				console.error(err);
 			});
 	} else {
 		//el.html(text);
