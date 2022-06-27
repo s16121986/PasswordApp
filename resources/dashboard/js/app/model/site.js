@@ -1,5 +1,5 @@
 import Model from "./concerns/entity";
-import Collection from "../support/collection";
+import Collection from "@support/collection";
 import Password from "./password";
 
 export default class Site extends Model {

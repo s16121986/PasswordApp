@@ -69,12 +69,12 @@ export default class Key {
 		try {
 			json = JSON.parse(atob(packed));
 		} catch (e) {
-			console.log(packed);
+			//console.log(packed);
 			throw 'Pack format invalid (json required)';
 		}
 
 		if (!json || !json.iv || !json.cipher)
-			throw 'Pack format invalid (json required)';
+			throw 'Pack format invalid (json broken)';
 
 		const iv = utils.unpack(json.iv);
 		const cipher = utils.unpack(json.cipher);

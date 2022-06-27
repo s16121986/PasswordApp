@@ -8,10 +8,18 @@ const extensionPath = 'chrome-extension/PasswordApp';
 
 mix.alias({
 	'@dashboard': resourcesPath + '/dashboard/js/',
+	'@app': resourcesPath + '/dashboard/js/app/',
+	'@support': resourcesPath + '/dashboard/js/support/',
 	'@core': resourcesPath + '/dashboard/js/core/',
 	'@ui': resourcesPath + '/dashboard/js/core/ui/',
 
 	'~dashboard': resourcesPath + '/dashboard/sass',
+});
+
+mix.options({
+	terser: {
+		extractComments: false,
+	}
 });
 
 const getFiles = function (dir, path = '') {

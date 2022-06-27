@@ -1,5 +1,5 @@
 import BaseItem from "./item"
-import selection from "../../support/selection"
+import selection from "@support/selection"
 
 export default class Email extends BaseItem {
 

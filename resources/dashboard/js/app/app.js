@@ -1,11 +1,7 @@
 import Data from "./storage/data";
-import Dashboard from "./dashboard/dashboard";
 import Broadcast from "./broadcast/broadcast";
 import Encoder from "./encrypt/key";
 import EncryptKey from "./storage/key";
-import PasswordGenerator from "./dashboard/services/password-renerator/dialog";
-import Progressbar from "./dashboard/ui/progressbar";
-import SettingsDialog from "./dashboard/settings/dialog";
 
 let instance;
 let instances = {};
@@ -24,13 +20,10 @@ export default class Application {
 
 	constructor() {
 		instance = this;
-		instances.encryptKey = new EncryptKey();
-		instances.data = new Data();
-		instances.dashboard = new Dashboard();
 		instances.broadcast = new Broadcast();
+		instances.encryptKey = new EncryptKey();
 		instances.encoder = new Encoder();
-		instances['password-generator'] = new PasswordGenerator();
-		instances.progressbar = new Progressbar();
-		instances.settings = new SettingsDialog();
+		instances.data = new Data();
+		//instances.settings = new SettingsDialog();
 	}
 }

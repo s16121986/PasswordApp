@@ -1,0 +1,24 @@
+@import "../common";
+@import "../ui/loader";
+
+body {font-size: 13px;color: $color-text;display: flex;flex-direction: column;background: #f9f9f9;min-width: 320px;}
+body {padding: 32px;}
+body, input, textarea, select, button {font-family: "Open Sans", sans-serif;font-weight: 300;}
+
+div.content-wrap {margin: 0 auto;max-width: 640px;}
+h1 {margin-bottom: 16px;font-weight: normal;font-size: 24px;padding: 0 16px;}
+#content {}
+
+fieldset {background: #fff;border-radius: 4px;padding: 16px 32px 32px 32px;border: 1px solid $color-border;}
+fieldset:not(:first-child) {margin-top: 32px;}
+fieldset legend {font-weight: 600;line-height: 16px;margin-bottom: 8px;}
+div.form-field {display: flex;line-height: 16px;align-items: center;}
+div.form-field:not(:last-child) {margin-bottom: 16px;}
+div.form-field > input[type="text"] {flex-grow: 1;height: 32px;border: 1px solid $color-border;border-radius: 2px;padding: 0 8px;}
+div.form-field label {width: 80px;line-height: 32px;}
+
+button {height: 32px;background: $color-main;color: #fff;border: none;border-radius: 2px;min-width: 80px;}
+button:disabled {opacity: .4;cursor: default;}
+button:hover:not(:disabled) {opacity: .8;}
+
+#btn-key {margin-left: 8px;}

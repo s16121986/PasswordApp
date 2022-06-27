@@ -1,5 +1,5 @@
 import Application from "./app";
-import utils from "./support/utils";
+import utils from "@support/utils";
 
 Object.assign(window, {
 	app: (name, value) => {

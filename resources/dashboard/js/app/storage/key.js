@@ -20,7 +20,7 @@ export default class Key {
 		if (keyHash)
 			await app('encoder').importKey(keyHash);
 
-		return this.exists();
+		return keyHash;
 	}
 
 	exists() { return app('encoder').hasKey(); }

@@ -1,5 +1,5 @@
 import EventsTrait from "@core/events"
-import Collection from "../support/collection";
+import Collection from "@support/collection";
 import Site from "../model/site";
 import Email from "../model/email";
 import Ssh from "../model/ssh";

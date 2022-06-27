@@ -1,5 +1,5 @@
 import Form from "@ui/form/form";
-import Password from "../../model/password";
+import Password from "@app/model/password";
 import formFactory from "../forms/factory";
 
 export default {

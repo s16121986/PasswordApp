@@ -19,14 +19,16 @@ export default function CryptKeyDialog() {
 			if (app('encoder').hasKey()) {
 				await app('encryptKey').store();
 
-				app('dashboard').setLoading(true);
+				if (app('data').isEmpty()) {
+					app('dashboard').setLoading(true);
 
-				form.hide();
+					form.hide();
 
-				await app('data').load();
-				//await app('data').store();
+					await app('data').load();
+					//await app('data').store();
 
-				app('dashboard').setLoading(false);
+					app('dashboard').setLoading(false);
+				}
 			} else {
 
 				form.setLoading(false);

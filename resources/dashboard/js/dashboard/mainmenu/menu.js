@@ -1,9 +1,9 @@
 import BaseMenu from "@ui/menu/menu";
 import Form from "@ui/form/form";
-import Site from "../../model/site";
-import Note from "../../model/note";
-import Email from "../../model/email";
-import Ssh from "../../model/ssh";
+import Site from "@app/model/site";
+import Note from "@app/model/note";
+import Email from "@app/model/email";
+import Ssh from "@app/model/ssh";
 import formFactory from "../forms/factory";
 
 function createSubmit(data, form) {
@@ -62,12 +62,12 @@ export default class Menu extends BaseMenu {
 				cls: 'note',
 				handler: () => { createForm(Note, 'Добавить заметку'); }
 			})
-			.hr()
-			.defaultItem({
-				text: 'Настройки',
-				cls: 'settings',
-				handler: () => { app('settings').show(); }
-			})
+		/*.hr()
+		.defaultItem({
+			text: 'Настройки',
+			cls: 'settings',
+			handler: () => { app('settings').show(); }
+		})*/
 		/*.addItem({
 			text: 'Добавить документ',
 			cls: 'document',
