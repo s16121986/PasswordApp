@@ -1,0 +1,24 @@
+div.dashboard {
+	display: flex;
+	flex-direction: column;
+
+	.btn {width: 32px;height: 32px;cursor: pointer;text-align: center;color: #000;line-height: 32px;text-align: center;}
+	a.btn:hover {text-decoration: none;}
+	.btn:before {font-family: "FontAwesome";font-weight: 100;}
+	.btn:hover {color: $color-main;}
+	.btn-password:before {content: fa-content($fa-var-copy);}
+	.btn-eye:before {content: fa-content($fa-var-eye);}
+	.btn-link:before {content: fa-content($fa-var-arrow-up-right-from-square);}
+	.btn-filter:before {content: fa-content($fa-var-filter);}
+	.btn-menu:before {content: fa-content($fa-var-bars);font-size: 20px;}
+}
+
+section { flex-grow: 1; width: 100%; max-width: 400px; margin: 0 auto; background: #fff; padding: 8px 0 8px 0;}
+
+@import "header";
+@import "contextmenu";
+@import "list";
+@import "form";
+@import "note";
+@import "progressbar";
+@import "confirmation";

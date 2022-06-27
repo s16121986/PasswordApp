@@ -1,0 +1,4 @@
+.ui-progressbar {line-height: 20px;position: fixed;bottom: 0;right: 0;background: #fff;box-shadow: $shadow-popup;padding: 6px 8px;border-radius: 2px 0 0 0;font-size: 12px;}
+.ui-progressbar:before {content: "";display: inline-block;vertical-align: top;margin-right: 8px;font-family: "FontAwesome";font-weight: 100;font-size: 16px;}
+.ui-progressbar.copy:before {content: fa-content($fa-var-clipboard);}
+.ui-progressbar.copied:before {content: fa-content($fa-var-clipboard);}

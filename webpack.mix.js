@@ -7,13 +7,10 @@ const resourcesPath = rootPath + '/resources';
 const extensionPath = 'chrome-extension/PasswordApp';
 
 mix.alias({
-	'@dashboard': resourcesPath + '/dashboard/js/',
-	'@app': resourcesPath + '/dashboard/js/app/',
-	'@support': resourcesPath + '/dashboard/js/support/',
-	'@core': resourcesPath + '/dashboard/js/core/',
-	'@ui': resourcesPath + '/dashboard/js/core/ui/',
-
-	'~dashboard': resourcesPath + '/dashboard/sass',
+	'@app': resourcesPath + '/js/app/',
+	'@support': resourcesPath + '/js/support/',
+	'@core': resourcesPath + '/js/core/',
+	'@ui': resourcesPath + '/js/core/ui/',
 });
 
 mix.options({
@@ -52,10 +49,10 @@ const mixPath = function (resourcesPath, publicPath, mixMethod) {
 	});
 };
 
-mixPath('resources/dashboard/js', 'public/js', 'js');
-mixPath('resources/dashboard/sass', 'public/css', 'sass');
+//mixPath('resources/js', 'public/js', 'js');
+//mixPath('resources/sass', 'public/css', 'sass');
 
-mixPath('resources/chrome-extension/js', extensionPath + '/js', 'js');
-mixPath('resources/chrome-extension/sass', extensionPath + '/css', 'sass');
+mixPath('resources/js', extensionPath + '/js', 'js');
+mixPath('resources/sass', extensionPath + '/css', 'sass');
 
-const x = mix.js('resources/chrome-extension/js/background.js', extensionPath);
+mix.js('resources/js/background/background.js', extensionPath);

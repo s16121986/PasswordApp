@@ -1,0 +1,7 @@
+div.ui-confirmation {position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;padding: 16px;box-shadow: 0 0 8px rgba(0, 0, 0, .1);z-index: 99;}
+div.ui-confirmation div.buttons {
+	margin-top: 16px;
+	button {height: 32px;margin-right: 16px;border-radius: 3px;min-width: 96px;}
+	button.btn-submit {background: $color-main;color: #fff;border: none;}
+	button.btn-cancel {background: none;border: 1px solid $color-border;}
+}
