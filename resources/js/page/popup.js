@@ -14,8 +14,7 @@ $(document).ready(async function () {
 
 	await key.load();
 
-	if (key.exists()) {
-		console.log(chrome.runtime);
+	if (!key.exists()) {
 		if (extensionId)
 			chrome.runtime.openOptionsPage();
 		else

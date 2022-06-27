@@ -1,10 +1,21 @@
 const MAX_AGE = 86400000;
-const CACHE_NAME = 'app_serviceworker_v_1';
+const CACHE_NAME = 'app-cache';
 // ссылки на кэшируемые файлы
 const cacheUrls = [
-	'/',
-	'/css/dashboard.css',
-	'/js/dashboard.js'
+	'',
+	'options.html',
+	'/css/index.css',
+	'/css/options.css',
+	'/js/index.js',
+	'/js/options.js',
+	'/images/preload.svg',
+	'/fonts/fontawesome/fa-thin-100.ttf',
+	'/fonts/fontawesome/fa-thin-100.woff',
+	'/fonts/fontawesome/fa-thin-100.woff2',
+	'/fonts/OpenSans/OpenSans-Regular.ttf',
+	'/fonts/OpenSans/OpenSans-Bold.ttf',
+	'/fonts/OpenSans/OpenSans-SemiBold.ttf',
+	'/fonts/OpenSans/OpenSans-Light.ttf'
 ];
 
 self.addEventListener('install', function (event) {
@@ -15,7 +26,6 @@ self.addEventListener('install', function (event) {
 		// если такого не существует, то он будет создан
 		caches.open(CACHE_NAME).then(function (cache) {
 			// загружаем в наш cache необходимые файлы
-			console.log(cache)
 			return cache.addAll(cacheUrls);
 		})
 	);
@@ -30,15 +40,15 @@ self.addEventListener('fetch', function (event) {
 	console.log(event)
 	event.respondWith(
 		// ищем запрашиваемый ресурс в хранилище кэша
-		caches.match(event.request).then(function (cachedResponse) {
+		caches.match(event.request, {ignoreVary: true}).then(function (cachedResponse) {
 			let lastModified, fetchRequest;
-console.log(cachedResponse)
+			console.log(cachedResponse)
 			// если ресурс есть в кэше
 			if (cachedResponse) {
 				// получаем дату последнего обновления
 				lastModified = new Date(cachedResponse.headers.get('last-modified'));
 				// и если мы считаем ресурс устаревшим
-				if (lastModified && (Date.now() - lastModified.getTime()) > MAX_AGE) {
+				/*if (lastModified && (Date.now() - lastModified.getTime()) > MAX_AGE) {
 
 					fetchRequest = event.request.clone();
 					// создаём новый запрос
@@ -56,7 +66,7 @@ console.log(cachedResponse)
 					}).catch(function () {
 						return cachedResponse;
 					});
-				}
+				}*/
 				return cachedResponse;
 			}
 

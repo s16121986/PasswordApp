@@ -55,4 +55,5 @@ const mixPath = function (resourcesPath, publicPath, mixMethod) {
 mixPath('resources/js', extensionPath + '/js', 'js');
 mixPath('resources/sass', extensionPath + '/css', 'sass');
 
+mix.js('resources/js/sw/sw.js', extensionPath);
 mix.js('resources/js/background/background.js', extensionPath);
