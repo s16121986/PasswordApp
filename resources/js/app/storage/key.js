@@ -1,8 +1,4 @@
 export default class Key {
-	constructor() {
-
-	}
-
 	async hash() { return await app('encoder').exportKey(); }
 
 	async store() {
@@ -11,11 +7,13 @@ export default class Key {
 
 		const keyHash = await app('encoder').exportKey();
 
-		localStorage.setItem('key', keyHash);
+		await app('broadcast').send('key-import', keyHash);
+		//localStorage.setItem('key', keyHash);
 	}
 
 	async load() {
-		const keyHash = localStorage.getItem('key');
+		const keyHash = await app('broadcast').send('key-export');
+		//const keyHash = localStorage.getItem('key');
 
 		if (keyHash)
 			await app('encoder').importKey(keyHash);

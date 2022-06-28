@@ -3,8 +3,6 @@ import Application from "./app/app"
 (async function (global) {
 	const _app = new Application();
 
-	_app.boot();
-
 	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		if (sender.id !== _app.extensionId)
 			return;
@@ -15,13 +13,15 @@ import Application from "./app/app"
 			return;
 		}
 
-		(async () => {
+		_app.ready(async () => {
 			const response = await router.execute(request.type, request.data);
 
 			sendResponse(response);
-		})();
+		});
 
 		return true;
 	});
+
+	_app.boot();
 
 })(self);

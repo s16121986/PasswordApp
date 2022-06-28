@@ -6,7 +6,7 @@ function readFile(file) {
 	});
 }
 
-async function importKey(key) {
+/*async function importKey(key) {
 	if (key && key !== app('currentKey'))
 		await app('encoder').importKey(key);
 
@@ -16,10 +16,11 @@ async function importKey(key) {
 	await app('encryptKey').store();
 
 	return true;
-}
+}*/
 
 async function _import(file, key) {
-	const keyFlag = await importKey(key);
+	const keyFlag = await app('broadcast').send('key-import', key);
+	//const keyFlag = await importKey(key);
 	if (!keyFlag)
 		throw 'Encrypt key required';
 
@@ -27,19 +28,20 @@ async function _import(file, key) {
 	if (!encodedData)
 		throw 'File content empty';
 
-	let data;
+	await app('broadcast').send('data-import', encodedData);
+	/*let data;
 	try {
 		const decrypted = await app('encoder').decrypt(encodedData);
 		data = JSON.parse(decrypted);
 	} catch (e) {
 		throw e;
-	}
+	}*/
 
 	app('currentKey', key);
 
-	app('data').setData(data);
+	/*app('data').setData(data);
 
-	await app('data').store();
+	await app('data').store();*/
 
 	reload();
 }

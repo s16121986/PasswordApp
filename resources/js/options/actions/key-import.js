@@ -1,5 +1,6 @@
 export default async function importKey(key) {
-	if (!key || key === app('currentKey'))
+	await app('broadcast').send('key-import', key);
+	/*if (!key || key === app('currentKey'))
 		return;
 
 	await app('encoder').importKey(key);
@@ -11,7 +12,7 @@ export default async function importKey(key) {
 
 		if (app('data').isEmpty())
 			await app('data').load();
-	}
+	}*/
 
 	reload();
 }

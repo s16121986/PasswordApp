@@ -1,18 +1,19 @@
-//import CryptKeyUndefined from "../exceptions/crypt-key-undefined";
+import CryptKeyUndefined from "../exceptions/crypt-key-undefined";
 import ArgumentRequired from "../exceptions/argument-required";
 
 export default async function (data) {
-	//const encoder = app('encoder');
-	const storage = app('storage');
+	if (!app('encoder').hasKey())
+		throw new CryptKeyUndefined();
 
 	if (!data)
 		throw new ArgumentRequired('data');
 
-	//else if (encoder.hasKey())
-	//	throw new CryptKeyUndefined();
+	const encoder = app('encoder');
+	const storage = app('storage');
 
-	//const encrypted = await encoder.encrypt(data);
-	await storage.store('data', data);
+	const encrypted = await encoder.encrypt(data);
+
+	await storage.store('data', encrypted);
 
 	console.log('Data stored to sync');
 

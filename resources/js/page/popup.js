@@ -4,17 +4,20 @@ import Application from "../app/app";
 import Dashboard from "../dashboard/dashboard";
 import PasswordGenerator from "../dashboard/services/password-renerator/dialog";
 import Progressbar from "../dashboard/ui/progressbar";
+import Broadcast from "../app/broadcast/broadcast";
+import Data from "../app/storage/data";
 
 const extensionId = chrome.runtime.id;
 
 $(document).ready(async function () {
 	new Application();
 
-	const key = app('encryptKey');
+	app('broadcast', new Broadcast());
 
-	await key.load();
+	//const key = app('encryptKey');
+	const keyExists = await app('broadcast').send('key-exists');
 
-	if (!key.exists()) {
+	if (!keyExists) {
 		if (extensionId)
 			chrome.runtime.openOptionsPage();
 		else
@@ -22,6 +25,7 @@ $(document).ready(async function () {
 		return;
 	}
 
+	app('data', new Data());
 	app('dashboard', new Dashboard());
 	app('password-generator', new PasswordGenerator());
 	app('progressbar', new Progressbar());

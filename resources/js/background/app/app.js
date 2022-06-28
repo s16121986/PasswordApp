@@ -1,6 +1,8 @@
 import Storage from "./storage/sync";
 import Router from "./router/router";
+import Encoder from "../../app/encrypt/key";
 import bootRouter from "./router/boot";
+import bootStorage from "./storage/boot";
 
 let readyState = false;
 let readyHandlers = [];
@@ -13,12 +15,14 @@ export default class Application {
 		//this.basePath = chrome.runtime.getURL('');
 
 		instance = this;
+		instances.encoder = new Encoder();
 		instances.storage = new Storage();
 		instances.router = new Router();
 	}
 
 	async boot() {
 		bootRouter(instances.router);
+		await bootStorage(instances.encoder);
 
 		readyState = true;
 		readyHandlers.forEach(h => h.callback.call(h.scope));

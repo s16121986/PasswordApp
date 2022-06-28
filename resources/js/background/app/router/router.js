@@ -15,7 +15,9 @@ export default class Router {
 			response.data = await routes[route].apply(null, args);
 			response.status = true;
 		} catch (e) {
+			response.route = route;
 			response.error = true;
+			console.error(e);
 			response.exception = e;
 		}
 

@@ -13,6 +13,18 @@
 		"default_title": "Открыть страницу паролей",
 		"default_popup": "popup.html"
 	},
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*/*",
+				"https://*/*"
+			],
+			"js": [
+				"content.js"
+			],
+			"run_at": "document_start"
+		}
+	],
 	"options_page": "options.html",
 	"background": {
 		"type": "module",

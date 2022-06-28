@@ -1,10 +1,8 @@
 import ArgumentRequired from "../exceptions/argument-required";
 
-export default async function dataImport(data) {
-	const storage = app('storage');
-
-	if (!data)
+export default async function dataImport(encrypted) {
+	if (!encrypted)
 		throw new ArgumentRequired('data');
 
-	return await storage.store('data', data);
+	return await app('storage').store('data', encrypted);
 }
