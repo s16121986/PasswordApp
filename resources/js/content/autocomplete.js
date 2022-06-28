@@ -20,24 +20,14 @@ export default class Autocomplete {
 		if (!this.isFillable())
 			return;
 
-		this.login.value = password.get('login');
-		this.password.focus();
-		this.password.dispatchEvent(new Event('focus'));
-		this.password.value = password.get('password');
-		this.password.dispatchEvent(new KeyboardEvent('keydown'));
-		this.password.dispatchEvent(new KeyboardEvent('keyup'));
-		this.password.dispatchEvent(new KeyboardEvent('keypress'));
-		this.password.dispatchEvent(new Event('change'));
-		this.password.dispatchEvent(new Event('input'));
+		//this.login.value = password.get('login');
+		//setAttribute('value', password.get('password'));
 
-		window.setTimeout(() => {
-			this.password.blur();
-			this.password.dispatchEvent(new Event('blur'));
-			this.password.focus();
-			this.password.value = password.get('password');
-			this.password.dispatchEvent(new Event('change'));
-			this.password.dispatchEvent(new Event('input'));
-		}, 2000);
+		this.login.select();
+		document.execCommand('insertText', false, password.get('login'));
+
+		this.password.select();
+		document.execCommand('insertText', false, password.get('password'));
 	}
 
 	isFillable() { return this.login && this.password; }

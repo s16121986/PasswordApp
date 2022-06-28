@@ -10,8 +10,7 @@
 		"128": "images/logo/mstile-144x144.png"
 	},
 	"action": {
-		"default_title": "Открыть страницу паролей",
-		"default_popup": "popup.html"
+		"default_title": "Открыть страницу паролей"
 	},
 	"options_page": "options.html",
 	"background": {
@@ -19,8 +18,14 @@
 		"service_worker": "background.js"
 	},
 	"permissions": [
+		"tabs",
+		"scripting",
+		"contextMenus",
 		"storage",
 		"idle"
+	],
+	"host_permissions": [
+		"*://*/*"
 	],
 	"optional_permissions": [
 	]

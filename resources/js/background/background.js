@@ -22,6 +22,12 @@ import Application from "./app/app"
 		return true;
 	});
 
+	chrome.action.onClicked.addListener(function (activeTab) {
+		app('tab').open();
+	});
+
 	_app.boot();
+
+	app('contextmenu').boot();
 
 })(self);

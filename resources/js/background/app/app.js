@@ -3,6 +3,8 @@ import Router from "./router/router";
 import Encoder from "../../app/encrypt/key";
 import bootRouter from "./router/boot";
 import bootStorage from "./storage/boot";
+import Contextmenu from "./contextmenu/contextmenu";
+import Tab from "./tab";
 
 let readyState = false;
 let readyHandlers = [];
@@ -12,12 +14,14 @@ let instances = {};
 export default class Application {
 	constructor() {
 		this.extensionId = chrome.runtime.id;
-		//this.basePath = chrome.runtime.getURL('');
 
 		instance = this;
+		instances.basePath = chrome.runtime.getURL('');
 		instances.encoder = new Encoder();
 		instances.storage = new Storage();
 		instances.router = new Router();
+		instances.tab = new Tab();
+		instances.contextmenu = new Contextmenu();
 	}
 
 	async boot() {
