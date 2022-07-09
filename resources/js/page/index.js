@@ -6,6 +6,7 @@ import PasswordGenerator from "../dashboard/services/password-renerator/dialog";
 import Progressbar from "../dashboard/ui/progressbar";
 import Broadcast from "../app/broadcast/broadcast";
 import Data from "../app/storage/data";
+import Router from "../dashboard/router/router";
 
 const extensionId = chrome.runtime.id;
 
@@ -25,11 +26,18 @@ $(document).ready(async function () {
 		return;
 	}
 
+	app('router', new Router());
 	app('data', new Data());
 	app('dashboard', new Dashboard());
 	app('password-generator', new PasswordGenerator());
 	app('progressbar', new Progressbar());
 
+	app('router')
+		.addViewRoute('home')
+		.addViewRoute('password-generator')
+		.addViewRoute('site-form')
+		.addViewRoute('home')
+		.addViewRoute('home');
 	app('data')
 		.bind('update', () => { app('dashboard').update(); });
 
