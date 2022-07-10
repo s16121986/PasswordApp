@@ -2,7 +2,12 @@ import itemFactory from "./items/factory";
 
 let activeMenu;
 
-function ondocumentclick(e) { activeMenu.hide(); }
+function ondocumentclick(e) {
+	if (activeMenu.getOption('hideAction') === 'destroy')
+		activeMenu.destroy();
+	else
+		activeMenu.hide();
+}
 
 export default class Menu {
 	#el;
@@ -11,7 +16,8 @@ export default class Menu {
 
 	constructor(options) {
 		options = Object.assign({
-			cls: ''
+			cls: '',
+			hideAction: 'hide'
 		}, options);
 		this.#el = $('<div class="list-menu ' + options.cls + '"></div>')
 		//.click(e => { e.stopPropagation(); })

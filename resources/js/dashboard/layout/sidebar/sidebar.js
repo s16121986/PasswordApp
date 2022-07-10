@@ -1,11 +1,16 @@
-class Tabs{
-	constructor() {
-		this.el = $('<nav></nav>');
-	}
+import Tags from "./tags";
 
-	update() {
+const actions = {
+	home: () => { app('dashboard').view('home'); },
+	notepad: () => { app('dashboard').view('notepad'); },
+	'password-generator': () => { app('dashboard').view('password-generator'); },
+	settings: () => { app('dashboard').view('settings'); }
+};
 
-	}
+function onAction() {
+	const action = $(this).data('action');
+	//const sidebar = app('dashboard').sidebar;
+	actions[action]();
 }
 
 export default class Sidebar {
@@ -17,25 +22,37 @@ export default class Sidebar {
 
 		const el = $('<sidebar></sidebar>');
 
-		this.tabs = new Tabs();
-		el.append(this.tabs.el);
+		this.tags = new Tags();
+		el.append(this.tags.el);
 
-		let html = '<div class="sidebar-menu">''</div>';
+		//this.tabs = new Tabs();
+		//el.append(this.tabs.el);
+		let html = '';
+
+		//html += '<div class="spacer"></div>';
+		html += '<nav class="bottom">';
 		const add = (action, text) => {
-			html += '<div class="item ' + action+ '" data-action="' + action+ '">' + text + '</div>';
+			html += '<div class="item ' + action + '" data-action="' + action + '">' + text + '</div>';
 		};
 
-		spacer();
-		add('', 'Добавить');
+		add('notepad', 'Блокнот');
 		add('password-generator', 'Генератор паролей');
-		add('settings', 'Настройки')
+		//add('settings', 'Настройки');
+
+		html += '</nav>';
 
 		el.append(html);
 
+		el.find('div.item').click(onAction);
+
 		this.#el = el;
+
+		app('sidebar', this);
 	}
 
-	update() {
+	get el() { return this.#el; }
 
+	update() {
+		this.tags.update();
 	}
 }

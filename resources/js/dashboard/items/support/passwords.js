@@ -18,6 +18,8 @@ export default class Passwords {
 			this.#items.forEach(item => { this.el.append(item.el); });
 		} else
 			this.el.toggle();
+
+		this.el.parent().toggleClass('expanded');
 	}
 
 	update() {

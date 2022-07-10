@@ -3,19 +3,23 @@ div.dashboard header {
 	z-index: 5;
 	box-shadow: 0 0 8px rgba(0, 0, 0, .1);
 	padding: 8px 0;
-	.wrap {width: 100%;max-width: 400px;margin: 0 auto;position: relative;}
-	.search {display: flex;padding: 0 0 0 8px;border: 1px solid #ccc;background: #fff;border-radius: 3px;margin: 0 8px;}
+	position: relative;
+	.wrap {width: 100%;max-width: 800px;margin: 0 auto;position: relative;display: flex;}
+	.logo {width: 200px;cursor: pointer;background: url("/images/logo.svg") 16px 50% no-repeat;}
+	.search {display: flex;flex-grow: 1;padding: 0 0 0 8px;border: 1px solid #ccc;background: #fff;border-radius: 3px;margin: 0 8px;}
 	input {flex-grow: 1;height: 30px;padding: 0;margin-right: 8px;border: none;background: none;}
-	.btn {font-size: 16px;height: 30px;}
-
-	div.tags {display: flex;color: #fff;flex-wrap: wrap;padding: 4px;}
-	div.tags > div {border-radius: 3px;font-size: 11px;padding: 0 8px;background: #888;margin: 4px;cursor: pointer;line-height: 20px;}
-	div.tags > div.selected {background: $color-main;}
-	div.tags > div:hover {opacity: .7;}
-	div.tags > div.favorite:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;content: fa-content($fa-var-bookmark);}
-	div.tags > div.archive:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;content: fa-content($fa-var-box-archive);}
-	div.tags > div span {display: inline-block;vertical-align: top;margin-left: 4px;color: #eee7;}
+	.btn {font-size: 16px;height: 30px;color: #fff;margin-right: 8px;}
 }
 div.dashboard header.expanded {padding-bottom: 0;}
 div.dashboard header:not(.expanded) div.tags {display: none;}
 div.dashboard header.fixed {position: fixed;left: 0;top: 0;width: 100%;}
+div.dashboard header::after {
+	content: "";
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 100%;
+	height: 4px;
+	background: linear-gradient(rgba(9, 30, 66, 0.13) 0px, rgba(9, 30, 66, 0.13) 1px, rgba(9, 30, 66, 0.08) 1px, rgba(9, 30, 66, 0) 4px);
+	z-index: 41;
+}

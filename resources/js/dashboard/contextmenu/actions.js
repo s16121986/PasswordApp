@@ -49,7 +49,7 @@ export default {
 				model.store();
 
 				if (undefined !== data.tags) {
-					app('dashboard').header.update();
+					app('dashboard').sidebar.update();
 					app('dashboard').filter();
 				}
 
@@ -62,7 +62,7 @@ export default {
 
 	tags: item => {
 		let html = '';
-		app('dashboard').header.tags
+		app('dashboard').availableTags
 			.sort((a, b) => a > b ? 1 : (a === b ? 0 : -1))
 			.forEach(t => {
 				const flag = item.model.hasTag(t);
@@ -79,7 +79,7 @@ export default {
 				});
 				item.model.set('tags', tags);
 				item.model.store();
-				app('dashboard').header.update();
+				app('dashboard').sidebar.update();
 				app('dashboard').filter();
 				form.hide();
 			}

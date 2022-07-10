@@ -20,11 +20,20 @@ function createSubmit(data, form) {
 	form.hide();
 }
 
+function getDefaultData() {
+	const filters = app('filters');
+	return {
+		tags: filters.tags,
+		favorite: filters.favorite,
+		archive: filters.archive
+	};
+}
+
 function createForm(modelFactory, title) {
 	const model = new modelFactory();
 	const form = new Form({
 		title: title,
-		model: model,
+		data: getDefaultData(),
 		submit: createSubmit
 	});
 	formFactory[model.model](form);
@@ -36,12 +45,6 @@ export default class Menu extends BaseMenu {
 		super({cls: 'mainmenu'});
 
 		this
-			.defaultItem({
-				text: 'Генератор паролей',
-				cls: 'key',
-				handler: () => { app('password-generator').show(); }
-			})
-			.hr()
 			.defaultItem({
 				text: 'Добавить сайт',
 				cls: 'site',

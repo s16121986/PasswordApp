@@ -24,7 +24,7 @@ function getChars(charsKeys) {
 function getChar(items) { return items.charAt(Math.round(Math.random() * (items.length - 1))); }
 
 function setInputVal(input, password) {
-	input.val(password);
+	input.value = password;
 	input.select();
 	document.execCommand("copy");
 }
@@ -52,7 +52,7 @@ export default {
 
 			for (let j = I; j < l; j++) { s += password.charAt(j); }
 
-			input.val(s);
+			input.value = s;
 			K++;
 			if (K % animateIteration === 0)
 				I--;

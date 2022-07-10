@@ -5,6 +5,7 @@ import Email from "./elements/email";
 import Textarea from "./elements/textarea";
 import Tags from "./elements/tags";
 import Popup from "../popup";
+import Checkbox from "./elements/checkbox";
 
 export default class Form extends Popup {
 	#elements = [];
@@ -40,6 +41,8 @@ export default class Form extends Popup {
 	password(name, params) { return this.addElement(new Password(name, params)); }
 
 	file(name, params) { return this.addElement(new File(name, params)); }
+
+	checkbox(name, params) { return this.addElement(new Checkbox(name, params)); }
 
 	textarea(name, params) { return this.addElement(new Textarea(name, params)); }
 

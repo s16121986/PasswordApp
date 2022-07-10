@@ -2,7 +2,7 @@ import Site from "../../items/site";
 import Ssh from "../../items/ssh";
 import Email from "../../items/email";
 import Note from "../../items/note";
-import Header from "./header";
+//import Header from "./header";
 
 let items = [];
 
@@ -25,17 +25,14 @@ function sort(a, b) {
 	return a.name > b.name ? 1 : (a.name === b.name ? 0 : -1);
 }
 
-
-export default class List{
+export default class List {
 	#el;
-	#header;
 
-	constructor() {
-		this.#el = $('<div class="view-main"></div>');
-		this.#header = new Header();
-
-		this.#el.append(this.#header.el);
+	constructor(view) {
+		this.#el = $('<div class="list"></div>');
 	}
+
+	get el() { return this.#el; }
 
 	get items() { return items; }
 
@@ -74,12 +71,10 @@ export default class List{
 		add('notes', Note);
 
 		this.filter();
-
-		this.header.update();
 	}
 
 	filter() {
-		const filters = this.#header.filters;
+		const filters = app('filters');
 		const trueFn = () => true;
 		const isFavorite = filters.favorite
 			? m => m.isFavorite

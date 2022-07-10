@@ -9,6 +9,7 @@ const extensionPath = 'chrome-extension/PasswordApp';
 mix.alias({
 	'@app': resourcesPath + '/js/app/',
 	'@support': resourcesPath + '/js/support/',
+	'@services': resourcesPath + '/js/services/',
 	'@core': resourcesPath + '/js/core/',
 	'@ui': resourcesPath + '/js/core/ui/',
 });
@@ -56,5 +57,7 @@ mixPath('resources/js', extensionPath + '/js', 'js');
 mixPath('resources/sass', extensionPath + '/css', 'sass');
 
 mix.js('resources/js/sw/sw.js', extensionPath);
-mix.js('resources/js/content/content.js', extensionPath);
 mix.js('resources/js/background/background.js', extensionPath);
+['find-password', 'generate-password'].forEach(n => {
+	mix.js('resources/js/content/' + n + '/content.js', extensionPath + '/' + n);
+});

@@ -7,12 +7,13 @@ import Note from "../model/note";
 import Sync from "./sync";
 
 let collections;
+let dataObject = {};
 
 const modelAssoc = {
 	site: 'sites',
 	ssh: 'ssh',
 	email: 'emails',
-	note: 'notes',
+	note: 'notes'
 };
 
 function parseData(data) {
@@ -53,6 +54,7 @@ export default class Data {
 			//documents: new Collection(),
 			//tags: new Collection(),
 		};
+		dataObject.notepad = '';
 		//this.#tags = new Collection();
 		//this.#cards = new Collection();
 
@@ -63,7 +65,9 @@ export default class Data {
 
 	getModelCollection(model) { return collections[modelAssoc[model.model]]; }
 
-	get(name) { return collections[name]; }
+	get(name) { return collections[name] || dataObject[name]; }
+
+	set(name, value) { dataObject[name] = value; }
 
 	remove(item) {
 		for (let i in collections) {
@@ -90,6 +94,8 @@ export default class Data {
 			const c = collections[i];
 			(data[i] || []).forEach(r => c.add(new factories[i](r)));
 		}
+
+		dataObject.notepad = data.notepad || '';
 
 		this.trigger('update');
 	}
@@ -125,6 +131,10 @@ export default class Data {
 			if (!collections[i].isEmpty())
 				return false;
 		}
+
+		if (dataObject.notepad)
+			return false;
+
 		return true;
 	}
 
@@ -132,6 +142,7 @@ export default class Data {
 		for (let i in collections) {
 			collections[i].clear();
 		}
+		dataObject.notepad = '';
 	}
 
 	serialize() {
@@ -139,7 +150,7 @@ export default class Data {
 		for (let i in collections) {
 			data[i] = collections[i].serialize();
 		}
-		return data;
+		return Object.assign(data, dataObject);
 	}
 
 	toString() { return JSON.stringify(this.serialize()); }

@@ -9,6 +9,10 @@ function onFavoriteChange(flag) {
 	this.el[flag ? 'addClass' : 'removeClass']('favorite');
 }
 
+function onArchiveChange(flag) {
+	this.el[flag ? 'addClass' : 'removeClass']('archive');
+}
+
 export default class Item {
 	#el;
 	#model;
@@ -19,7 +23,9 @@ export default class Item {
 			+ '<div class="row">'
 			+ '<div class="icon"></div>'
 			+ '<div class="name">' + (params.name || this.name) + '</div>'
-			//+ '<div class="btn btn-menu"></div>'
+			+ '<div class="flag favorite"></div>'
+			+ '<div class="flag archive"></div>'
+			+ '<div class="spacer"></div>'
 			+ '</div>'
 			+ '</div>');
 
@@ -28,9 +34,13 @@ export default class Item {
 		if (model.isFavorite)
 			el.addClass('favorite');
 
+		if (model.isArchive)
+			el.addClass('archive');
+
 		model
 			.bind('change', onChange, this)
-			.bind('favorite-change', onFavoriteChange, this);
+			.bind('favorite-change', onFavoriteChange, this)
+			.bind('archive-change', onArchiveChange, this);
 
 		el.find('>div.row')
 			.click(e => { this.click(); })

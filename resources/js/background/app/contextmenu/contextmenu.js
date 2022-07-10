@@ -2,11 +2,27 @@ const handlers = {
 	findPassword: (clickData, tab) => {
 		chrome.scripting.executeScript({
 			target: {tabId: tab.id},
-			files: ['content.js']
+			files: ['find-password/content.js']
 		});
 	},
-	generatePassword: () => {
+	/*createSite: async (clickData, tab) => {
+		const url = clickData.pageUrl;
+		const dashboardTab = app('tab');
+		if (!dashboardTab.isOpened())
+			await dashboardTab.create();
 
+		await dashboardTab.sendMessage({
+			action: 'createSite',
+			url: url
+		});
+
+		dashboardTab.focus();
+	},*/
+	generatePassword: (clickData, tab) => {
+		chrome.scripting.executeScript({
+			target: {tabId: tab.id},
+			files: ['generate-password/content.js']
+		});
 	}
 };
 
@@ -27,26 +43,26 @@ export default class Contextmenu {
 			contexts: ['editable']
 		});
 
-		chrome.contextMenus.create({
+		/*chrome.contextMenus.create({
 			id: "create-item",
 			parentId: "main",
 			title: "Добавить элемент",
 			contexts: ['selection']
-		});
+		});*/
 
 		chrome.contextMenus.create({
 			id: "sep-1",
 			parentId: "main",
 			type: "separator",
-			contexts: ['editable', 'selection']
+			contexts: ['editable']
 		});
 
-		chrome.contextMenus.create({
-			id: "create-site",
+		/*chrome.contextMenus.create({
+			id: "createSite",
 			parentId: "main",
 			title: "Добавить в сайты",
 			contexts: ['all']
-		});
+		});*/
 
 		chrome.contextMenus.create({
 			id: "generatePassword",

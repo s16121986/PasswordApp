@@ -36,6 +36,8 @@ export default class View {
 				});
 		} else
 			this.el.toggle();
+
+		this.el.parent().toggleClass('expanded');
 	}
 
 	update() {

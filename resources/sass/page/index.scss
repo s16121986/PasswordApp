@@ -10,5 +10,4 @@ body, input, textarea, select, button {font-family: "Open Sans", sans-serif;font
 @include ui-scrollbar("body");
 
 @import "../dashboard/main";
-@import "../services/password-generator";
 //@import "../services/settings";

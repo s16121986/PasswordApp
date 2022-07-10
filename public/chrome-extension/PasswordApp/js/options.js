@@ -869,6 +869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var collections;
+var dataObject = {};
 var modelAssoc = {
   site: 'sites',
   ssh: 'ssh',
@@ -947,7 +948,8 @@ var Data = /*#__PURE__*/function () {
       notes: new _support_collection__WEBPACK_IMPORTED_MODULE_1__["default"]() //documents: new Collection(),
       //tags: new Collection(),
 
-    }; //this.#tags = new Collection();
+    };
+    dataObject.notepad = ''; //this.#tags = new Collection();
     //this.#cards = new Collection();
 
     this.sync = new _sync__WEBPACK_IMPORTED_MODULE_6__["default"]();
@@ -966,7 +968,12 @@ var Data = /*#__PURE__*/function () {
   }, {
     key: "get",
     value: function get(name) {
-      return collections[name];
+      return collections[name] || dataObject[name];
+    }
+  }, {
+    key: "set",
+    value: function set(name, value) {
+      dataObject[name] = value;
     }
   }, {
     key: "remove",
@@ -1003,6 +1010,7 @@ var Data = /*#__PURE__*/function () {
         _loop(i);
       }
 
+      dataObject.notepad = data.notepad || '';
       this.trigger('update');
     }
   }, {
@@ -1097,6 +1105,7 @@ var Data = /*#__PURE__*/function () {
         if (!collections[i].isEmpty()) return false;
       }
 
+      if (dataObject.notepad) return false;
       return true;
     }
   }, {
@@ -1105,6 +1114,8 @@ var Data = /*#__PURE__*/function () {
       for (var i in collections) {
         collections[i].clear();
       }
+
+      dataObject.notepad = '';
     }
   }, {
     key: "serialize",
@@ -1115,7 +1126,7 @@ var Data = /*#__PURE__*/function () {
         data[i] = collections[i].serialize();
       }
 
-      return data;
+      return Object.assign(data, dataObject);
     }
   }, {
     key: "toString",
@@ -2617,8 +2628,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function copy(text, successText) {
-  if (navigator.clipboard) {
+var copy = function () {
+  if (navigator.clipboard) return function (text, successText) {
     app('progressbar').show({
       cls: 'copy',
       text: 'Копирование',
@@ -2636,9 +2647,17 @@ function copy(text, successText) {
       });
       console.error(err);
     });
-  } else {//el.html(text);
-  }
-}
+  };else return function (text, successText) {
+    var copyFrom = document.createElement("textarea");
+    copyFrom.style.visibility = 'hidden';
+    copyFrom.textContent = text;
+    document.body.appendChild(copyFrom);
+    copyFrom.select();
+    document.execCommand('copy');
+    copyFrom.blur();
+    document.body.removeChild(copyFrom);
+  };
+}();
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   copy: copy

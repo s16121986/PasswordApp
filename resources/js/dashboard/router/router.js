@@ -1,4 +1,12 @@
-const routes = {};
+const routes = [];
+
+function getLocationName() {
+	const hash = location.hash;
+	if (!hash || hash === '#')
+		return 'home';
+	else
+		return hash.substr(1);
+}
 
 export default class Router {
 	constructor() {}
@@ -15,17 +23,27 @@ export default class Router {
 
 	addViewRoute(name) {
 		return this.addRoute(name, route => {
-			add('dashboard').view(route.name);
+			app('dashboard').view(route.name);
 		});
 	}
 
 	hasRoute(name) { return !!routes.find(r => r.name === name); }
 
 	execute(name) {
+		if (undefined === name)
+			name = getLocationName();
+
 		const route = routes.find(r => r.name === name);
 		if (!route)
 			throw 'Route [' + name + '] not found';
 
 		route.handler.call(route.scope, route);
+	}
+
+	boot() {
+		this.execute(getLocationName());
+
+		addEventListener('popstate', event => { this.execute(); });
+		//window.addEventListener()
 	}
 }

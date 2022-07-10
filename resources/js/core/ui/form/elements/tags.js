@@ -2,7 +2,7 @@ import Element from "./element";
 
 class Tag {
 	constructor(field, tag) {
-		this.value = tag.toLowerCase();
+		this.value = tag;
 		this.el = $('<div class="tag">'
 			+ this.value
 			+ '<div class="btn-remove"></div>'
@@ -23,13 +23,20 @@ export default class Tags extends Element {
 
 	constructor() { super('tags'); }
 
-	boot(el) {
+	boot(el, params) {
 		super.boot(el, {label: 'Теги'});
 
 		el.addClass('field-tags');
 
+		let list = '<datalist id="form-tags">';
+		app('dashboard').availableTags.forEach(tag => {
+			list += '<option>' + tag + '</option>';
+		});
+		list += '</datalist>';
+
 		const wrap = $('<div class="wrap">'
-			+ '<input type="text" id="' + this.id + '" autocomplete="off" />'
+			+ '<input type="text" id="' + this.id + '" list="form-tags" autocomplete="off" />'
+			+ list
 			+ '<nav></nav>'
 			+ '</div>')
 			.appendTo(el);
@@ -47,7 +54,7 @@ export default class Tags extends Element {
 				}
 			})
 			.bind('blur', e => {
-				const val = this.input.val().toLowerCase();
+				const val = this.input.val();
 				if (val === '')
 					return;
 

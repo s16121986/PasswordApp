@@ -10,6 +10,8 @@ div.window-form div.form-field {margin-bottom: 16px;position: relative;display: 
 div.window-form label.form-element-label {position: absolute;font-size: 10px;left: 5px;top: -5px;line-height: 10px;padding: 0 4px;width: auto;background: #ffffff;z-index: 1;}
 div.window-form div.form-field:last-child {margin-bottom: 0;}
 
+div.window-form div.field-tags > div.wrap {flex-grow: 1;}
+
 div.window-form div.form-field > input[type="text"],
 div.window-form div.form-field > input[type="password"],
 div.window-form div.form-field > input[type="email"],

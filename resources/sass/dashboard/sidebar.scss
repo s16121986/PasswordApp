@@ -1,0 +1,38 @@
+sidebar {width: 200px;position: fixed;display: flex;flex-direction: column;font-size: 13px;height: calc(100% - 48px);padding: 8px 0;}
+sidebar::after {
+	content: "";
+	display: block;
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0) 100%);
+	bottom: 0px;
+	top: 0px;
+	right: 1px;
+	opacity: 0.5;
+	pointer-events: none;
+	position: absolute;
+	transition-duration: 0.22s;
+	transition-property: left, opacity, width;
+	transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+	width: 3px;
+}
+
+
+sidebar > nav.bottom {
+	line-height: 32px;
+	> div.item {cursor: pointer;padding: 0 16px;}
+	> div.item:hover {background: #eee;}
+}
+
+sidebar > nav.tags {
+	line-height: 32px;flex-grow: 1;
+	div {padding: 0 16px 0 14px;cursor: pointer;border-left: 2px solid transparent;}
+	div.selected {border-left-color: $color-main;}
+	div:hover {background: #eee;}
+	div.flag {position: relative;}
+	div.flag:before {font-family: "FontAwesome";font-weight: 100;font-size: 12px;position: absolute;right: 16px;}
+	div.favorite:before {content: fa-content($fa-var-bookmark);}
+	div.archive:before {content: fa-content($fa-var-box-archive);}
+	div.noTag:before {content: fa-content($fa-var-tag);}
+	div span {display: inline-block;vertical-align: top;margin-left: 8px;color: #aaa;font-size: 11px;}
+	div.edited {padding: 0;}
+	input {border: none;height: 32px;margin: 0;padding: 0 16px;vertical-align: top;width: 100%;}
+}

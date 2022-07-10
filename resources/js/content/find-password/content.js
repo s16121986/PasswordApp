@@ -1,7 +1,7 @@
-import "../common"
-import Application from "../app/app";
-import Broadcast from "../app/broadcast/broadcast";
-import Data from "../app/storage/data";
+import "../../common"
+import Application from "../../app/app";
+import Broadcast from "../../app/broadcast/broadcast";
+import Data from "../../app/storage/data";
 import Autocomplete from "./autocomplete";
 
 async function execute() {
