@@ -13,6 +13,8 @@ function onArchiveChange(flag) {
 	this.el[flag ? 'addClass' : 'removeClass']('archive');
 }
 
+let expandedItem;
+
 export default class Item {
 	#el;
 	#model;
@@ -80,7 +82,32 @@ export default class Item {
 
 	hide() { this.#el.hide(); }
 
+	toggleExpand() {
+		if (this.#el.hasClass('expanded'))
+			this.collapse();
+		else
+			this.expand();
+	}
+
+	expand() {
+		if (expandedItem)
+			expandedItem.collapse();
+
+		expandedItem = this;
+		this.#el.addClass('expanded');
+	}
+
+	collapse() {
+		if (expandedItem === this)
+			expandedItem = undefined;
+
+		this.#el.removeClass('expanded');
+	}
+
 	destroy() {
+		if (expandedItem === this)
+			expandedItem = undefined;
+
 		this.#model
 			.unbind('change', onChange)
 			.unbind('favorite-change', onFavoriteChange);

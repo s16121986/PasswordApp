@@ -32,7 +32,7 @@ export default class Header {
 				inputTimeout = undefined;
 				app('filters').term = el.find('input').val();
 				app('filters').store();
-				app('dashboard').view('home');
+				route('home');
 				app('dashboard').update();
 			}, 300);
 		});
@@ -42,7 +42,7 @@ export default class Header {
 			this.#menu.toggle();
 		});
 
-		el.find('div.logo').click(e => { app('dashboard').view('home'); });
+		el.find('div.logo').click(e => { route('home'); });
 	}
 
 	get el() { return this.#el; }

@@ -61,3 +61,8 @@
 .list-menu .colors a.red:before {@extend %color-red;}
 
 .mainmenu {display: none; right: 8px; top: 32px;margin-top: 4px; width: 152px;}
+
+@media (prefers-color-scheme: dark) {
+	.list-menu {background: #292A2D;color: #e8eaed;}
+	.list-menu .item-wrap:hover {color: #fff;background: #3F4042;}
+}

@@ -26,6 +26,17 @@ function parseData(data) {
 	return null;
 }
 
+async function loadData() {
+	const data = await app('data').sync.get();
+	if (data) {
+		//console.log('Sync data: ', data);
+		sessionStorage.setItem('data', data);
+
+		return parseData(data);
+	} else
+		sessionStorage.setItem('data', '{}');
+}
+
 async function retrieveData() {
 	let data = sessionStorage.getItem('data');
 	//data = decodeURIComponent(escape(atob(data)));
@@ -34,14 +45,14 @@ async function retrieveData() {
 		return parseData(data);
 
 	//data = localStorage.getItem('data');
-	data = await app('data').sync.get();
-	if (!data)
-		return;
+	return await loadData();
+}
 
-	//console.log('Sync data: ', data);
-	sessionStorage.setItem('data', data);
-
-	return parseData(data);
+function clearData() {
+	for (let i in collections) {
+		collections[i].clear();
+	}
+	dataObject.notepad = '';
 }
 
 export default class Data {
@@ -76,10 +87,11 @@ export default class Data {
 	}
 
 	setData(data) {
-		this.clear();
+		clearData();
 
 		if (!data) {
 			this.trigger('update');
+
 			return;
 		}
 
@@ -100,30 +112,35 @@ export default class Data {
 		this.trigger('update');
 	}
 
+	cache() {
+		sessionStorage.setItem('data', this.toString());
+	}
+
 	async store() {
-		if (this.isEmpty()) {
-			sessionStorage.removeItem('data');
+		this.cache();
 
+		if (this.isEmpty())
 			await this.sync.clear();
-		} else {
-			const content = this.toString();
-
-			sessionStorage.setItem('data', content);
-
-			await this.sync.set(content);
-		}
+		else
+			await this.sync.set(this.toString());
 
 		this.trigger('store');
 	}
 
 	async load() {
-		const data = await retrieveData();
-		if (!data)
-			return;
+		const data = await loadData();
 
 		this.setData(data);
 
-		this.trigger('load');
+		//this.trigger('load');
+	}
+
+	async retrieve() {
+		const data = await retrieveData();
+
+		this.setData(data);
+
+		//this.trigger('retrieve');
 	}
 
 	isEmpty() {
@@ -139,10 +156,9 @@ export default class Data {
 	}
 
 	clear() {
-		for (let i in collections) {
-			collections[i].clear();
-		}
-		dataObject.notepad = '';
+		clearData();
+
+		this.trigger('update');
 	}
 
 	serialize() {

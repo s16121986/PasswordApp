@@ -10,20 +10,21 @@ import Router from "../dashboard/router/router";
 const extensionId = chrome.runtime.id;
 
 $(document).ready(async function () {
+	document.execCommand("defaultParagraphSeparator", false, "\n");
+
 	new Application();
 
 	app('broadcast', new Broadcast());
 
-	const key = app('encryptKey');
 	const keyExists = await app('broadcast').send('key-exists');
 
-	if (!keyExists) {
+	/*if (!keyExists) {
 		if (extensionId)
 			chrome.runtime.openOptionsPage();
 		else
 			window.open('options.html');
 		return;
-	}
+	}*/
 
 	app('router', new Router());
 	app('data', new Data());
@@ -31,23 +32,16 @@ $(document).ready(async function () {
 	//app('password-generator', new PasswordGenerator());
 	app('progressbar', new Progressbar());
 
-	app('data')
-		.bind('update', () => { app('dashboard').update(); });
-
 	app('dashboard').setLoading(true);
 
-	await app('data').load();
+	await app('data').retrieve();
 
 	app('router')
 		.addViewRoute('home')
 		.addViewRoute('password-generator')
 		.addViewRoute('notepad')
-		.boot();
+		.addViewRoute('settings')
+		.boot(keyExists ? null : 'settings');
 
 	app('dashboard').setLoading(false);
-});
-
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	console.log(request, sender);
 });

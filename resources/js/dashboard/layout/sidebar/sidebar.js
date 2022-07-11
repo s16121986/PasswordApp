@@ -1,10 +1,10 @@
 import Tags from "./tags";
 
 const actions = {
-	home: () => { app('dashboard').view('home'); },
-	notepad: () => { app('dashboard').view('notepad'); },
-	'password-generator': () => { app('dashboard').view('password-generator'); },
-	settings: () => { app('dashboard').view('settings'); }
+	home: () => { route('home'); },
+	notepad: () => { route('notepad'); },
+	'password-generator': () => { route('password-generator'); },
+	settings: () => { route('settings'); }
 };
 
 function onAction() {
@@ -37,7 +37,7 @@ export default class Sidebar {
 
 		add('notepad', 'Блокнот');
 		add('password-generator', 'Генератор паролей');
-		//add('settings', 'Настройки');
+		add('settings', 'Настройки');
 
 		html += '</nav>';
 
@@ -48,6 +48,8 @@ export default class Sidebar {
 		this.#el = el;
 
 		app('sidebar', this);
+
+		app('data').bind('update', () => { this.update(); });
 	}
 
 	get el() { return this.#el; }

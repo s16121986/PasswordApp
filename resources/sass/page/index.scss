@@ -11,3 +11,9 @@ body, input, textarea, select, button {font-family: "Open Sans", sans-serif;font
 
 @import "../dashboard/main";
 //@import "../services/settings";
+
+@media (prefers-color-scheme: dark) {
+	body {background: #202124;color: #9aa0a6;}
+
+	input, textarea, select {background: #1D1D1F;color: #e8eaed;border-color: #3F4042;}
+}

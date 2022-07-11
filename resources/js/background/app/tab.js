@@ -1,52 +1,68 @@
+const pagePath = 'index.html';
+const extensionUrl = chrome.runtime.getURL(pagePath);
+
 export default class Tab {
-	sendMessage(data) {
-		return new Promise((resolve, reject) => {
-			chrome.tabs.sendMessage(this.id, data, function (response) {
+	async sendMessage(data) {
+		let tab = await this.find();
+		if (!tab)
+			tab = await this.openInstance({active: false});
+
+		return await new Promise((resolve, reject) => {
+			chrome.tabs.sendMessage(tab.id, data, (response) => {
 				//console.log(arguments);
 				resolve(response);
 			});
+		});/**/
+
+		/*const tab = await this.activate();
+		const port = chrome.tabs.connect(tab.id, {name: "knockknock"});
+		port.postMessage({type: 'init', extensionId: chrome.runtime.id});
+		port.onMessage.addListener(function(msg) {
+			console.log(arguments)
+		});*/
+		//chrome.tabs.connect(id);
+		//self.sendMessage({type: 'init', extensionId: chrome.runtime.id});
+	}
+
+	find() {
+		return new Promise((resolve, reject) => {
+			chrome.tabs.query({url: extensionUrl}, tabs => {
+				resolve(tabs.length > 0 ? tabs[0] : null);
+			});
 		});
 	}
 
-	isOpened() { return this.id !== undefined; }
+	async isOpened() { return !!(await this.find()); }
 
-	focus() { chrome.tabs.update(this.id, {selected: true}); }
+	async focus() {
+		const tab = await this.find();
+		if (!tab)
+			return false;
 
-	create() {
+		chrome.tabs.update(tab.id, {selected: true});
+
+		return true;
+	}
+
+	open(params) {
 		return new Promise((resolve, reject) => {
-			chrome.tabs.create({
+			chrome.tabs.create(Object.assign({
 				active: true,
 				pinned: true,
 				index: 1,
-				url: "index.html"//app('basePath') +
-			}, (tab) => {
-				this.id = tab.id;
-
-				resolve();
-				/*const port = chrome.tabs.connect(id, {name: "knockknock"});
-				port.postMessage({type: 'init', extensionId: chrome.runtime.id});
-				port.onMessage.addListener(function(msg) {
-					console.log(arguments)
-				});*/
-				//chrome.tabs.connect(id);
-				//self.sendMessage({type: 'init', extensionId: chrome.runtime.id});
-			});
+				url: pagePath
+			}, params), (tab) => { resolve(tab); });
 		});
 	}
 
-	open() {
-		if (!this.isOpened())
-			return this.create();
+	async openInstance() {
+		let tab = await this.find();
 
-		return new Promise((resolve, reject) => {
-			chrome.tabs.get(this.id, async (tab) => {
-				if (tab)
-					this.focus();
-				else
-					await this.create();
+		if (tab)
+			chrome.tabs.update(tab.id, {selected: true});
+		else
+			tab = await this.open();
 
-				resolve();
-			});
-		});
+		return tab;
 	}
 }

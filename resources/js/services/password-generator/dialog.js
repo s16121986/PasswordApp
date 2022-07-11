@@ -1,6 +1,5 @@
-import Base from "../view"
-import generator from "@services/password-generator/generator";
-
+import generator from "./generator";
+import Popup from "@ui/popup";
 
 const defaultLength = 16;
 
@@ -9,12 +8,15 @@ let inputLength;
 let inputSettings;
 let history;
 
-export default class View extends Base {
+export default class Dialog extends Popup {
 	constructor() {
-		super('password-generator');
+		super({
+			title: 'Генератор паролей',
+			cls: 'password-generator'
+		});
 	}
 
-	boot(el) {
+	boot(el, body) {
 		const sl = function (name, text) {
 			const id = '_ps_s_' + name;
 			return '<div class="item">'
@@ -23,10 +25,7 @@ export default class View extends Base {
 				+ '</div>';
 		};
 
-		const body = el;
-
 		body
-			.append('<h1>Генератор паролей</h1>')
 			.append('<div class="input-wrap">'
 				+ '<input type="number" value="' + defaultLength + '" />'
 				+ '<input type="text" readonly />'
@@ -52,14 +51,24 @@ export default class View extends Base {
 					chars[chars.length] = $(this).val();
 			});
 
+			const temp = input.val();
+
+			history.show().prepend('<div class="item">' + temp + '</div>');
+
 			let password = generator.generate(inputLength.val(), chars);
 
-			history.show().prepend('<div class="item">' + password + '</div>');
-
-			generator.animate(input[0], password);
+			generator.animate(input, password);
 		});
 
 		input.click(function () { input.select(); });
 	}
 
+	show() {
+		super.show();
+
+		if (input.val() === '')
+			generator.set(input, generator.generate(defaultLength));
+		else
+			input.select();
+	}
 }

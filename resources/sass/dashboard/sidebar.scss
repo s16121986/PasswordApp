@@ -36,3 +36,8 @@ sidebar > nav.tags {
 	div.edited {padding: 0;}
 	input {border: none;height: 32px;margin: 0;padding: 0 16px;vertical-align: top;width: 100%;}
 }
+
+@media (prefers-color-scheme: dark) {
+	sidebar > nav.bottom > div.item:hover,
+	sidebar > nav.tags div:hover {color: #fff;background: #3F4042;}
+}

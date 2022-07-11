@@ -12,7 +12,6 @@
 	"action": {
 		"default_title": "Открыть страницу паролей"
 	},
-	"options_page": "options.html",
 	"background": {
 		"type": "module",
 		"service_worker": "background.js"

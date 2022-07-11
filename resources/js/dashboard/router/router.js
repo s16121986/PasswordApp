@@ -38,10 +38,12 @@ export default class Router {
 			throw 'Route [' + name + '] not found';
 
 		route.handler.call(route.scope, route);
+
+		location.hash = name === 'home' ? '' : '#' + name;
 	}
 
-	boot() {
-		this.execute(getLocationName());
+	boot(route) {
+		this.execute(route || getLocationName());
 
 		addEventListener('popstate', event => { this.execute(); });
 		//window.addEventListener()

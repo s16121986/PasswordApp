@@ -34,10 +34,9 @@ export default class View {
 					}, 400);
 					//this.#timeout.start(true);
 				});
-		} else
-			this.el.toggle();
+		}
 
-		this.el.parent().toggleClass('expanded');
+		this.item.toggleExpand();
 	}
 
 	update() {

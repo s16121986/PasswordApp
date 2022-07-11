@@ -49,7 +49,7 @@ export default {
 				model.store();
 
 				if (undefined !== data.tags) {
-					app('dashboard').sidebar.update();
+					app('sidebar').update();
 					app('dashboard').filter();
 				}
 
@@ -79,7 +79,7 @@ export default {
 				});
 				item.model.set('tags', tags);
 				item.model.store();
-				app('dashboard').sidebar.update();
+				app('sidebar').update();
 				app('dashboard').filter();
 				form.hide();
 			}

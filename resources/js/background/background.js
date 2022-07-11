@@ -23,7 +23,7 @@ import Application from "./app/app"
 	});
 
 	chrome.action.onClicked.addListener(function (activeTab) {
-		app('tab').open();
+		app('tab').openInstance();
 	});
 
 	_app.boot();

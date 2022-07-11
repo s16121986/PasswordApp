@@ -11,5 +11,7 @@ Object.assign(window, {
 
 	dashboard: (name) => Application.getInstance('dashboard'),
 
+	route: route => { Application.getInstance('router').execute(route); },
+
 	copy: utils.copy
 });

@@ -16,10 +16,9 @@ export default class Passwords {
 			this.el = $('<div class="child"></div>').appendTo(this.item.el);
 			this.#items = getPasswordsItems(this.item);
 			this.#items.forEach(item => { this.el.append(item.el); });
-		} else
-			this.el.toggle();
+		}
 
-		this.el.parent().toggleClass('expanded');
+		this.item.toggleExpand();
 	}
 
 	update() {

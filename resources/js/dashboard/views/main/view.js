@@ -4,6 +4,8 @@ import List from "./list";
 export default class View extends Base {
 	constructor() {
 		super('home');
+
+		app('data').bind('update', () => { this.update(); });
 	}
 
 	boot(el) {

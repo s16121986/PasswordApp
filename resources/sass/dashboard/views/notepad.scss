@@ -1,1 +1,9 @@
-div.view-notepad {height: 100%;padding: 16px;line-height: 20px;letter-spacing: .3px;background: #fff4de73;}
+div.view-notepad {height: 100%;padding: 16px;}
+div.notepad-content {padding: 16px;background: #fff4de73;line-height: 20px;letter-spacing: .3px;min-height: 92px;white-space: pre-wrap;}
+div.view-notepad h1 {position: relative;}
+div.view-notepad .btn-clear {position: absolute;bottom: 0;right: 0;font-size: 12px;cursor: pointer;font-weight: 400;color: #9aa0a6;}
+div.view-notepad .btn-clear:hover {text-decoration: underline;}
+
+@media (prefers-color-scheme: dark) {
+	div.notepad-content {color: #fff;background: #3F4042;}
+}

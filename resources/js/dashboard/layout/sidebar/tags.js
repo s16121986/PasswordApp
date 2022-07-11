@@ -18,7 +18,7 @@ function searchTags() {
 }
 
 function onChange() {
-	app('dashboard').view('home');
+	route('home');
 	app('dashboard').update();
 	app('filters').store();
 }

@@ -12,6 +12,8 @@ class Local {
 	exists() { return !!localStorage.getItem(dataKey); }
 
 	clear() { localStorage.removeItem(dataKey); }
+
+	export() { return this.get(); }
 }
 
 class Remote {
@@ -23,6 +25,8 @@ class Remote {
 
 	async exists() { return await app('broadcast').send('data-exists'); }
 
+	async export() { return await app('broadcast').send('data-export'); }
+
 	async clear() { return await app('broadcast').send('data-clear'); }
 }
 
@@ -31,6 +35,8 @@ export default class Sync {
 		this.storage = isExtension()//(chrome && chrome.storage)
 			? new Remote()
 			: new Local();
+
+		app('dataSync', this);
 	}
 
 	async set(data) {
@@ -62,4 +68,6 @@ export default class Sync {
 	async clear() { return await this.storage.clear(); }
 
 	async exists() { return await this.storage.exists(); }
+
+	async export() { return await this.storage.export(); }
 }

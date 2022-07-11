@@ -50,8 +50,6 @@ export default class Dashboard {
 			this.#el.find('div.views-wrap').append(view.el);
 
 		currentView = view;
-
-		location.hash = name === 'home' ? '' : '#' + name;
 	}
 
 	filter() {

@@ -24,10 +24,14 @@ export default class Password extends BaseItem {
 			copy(this.innerText, 'Логин скопирован');
 		});
 
-		el.find('div.btn-eye').one('click', function () {
-			const password = model.get('password');
-			$(this).attr('class', 'password').html(password);
-			selection.element(this);
+		el.find('div.btn-eye').click('click', function () {
+			if ($(this).hasClass('password')) {
+				$(this).attr('class', 'btn btn-eye').html('');
+			} else {
+				const password = model.get('password');
+				$(this).attr('class', 'password').html(password);
+				//selection.element(this);
+			}
 		});
 
 		el.find('div.btn-password').click(() => { copy(model.get('password'), 'Пароль скопирован'); });

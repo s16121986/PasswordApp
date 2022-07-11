@@ -19,3 +19,7 @@ div.tags-popup div.window-body {
 	> div:hover {text-decoration: underline;}
 	> div.selected {background: $color-main;color: #fff;}
 }
+
+@media (prefers-color-scheme: dark) {
+	.field-tags {border-color: #3F4042;}
+}

@@ -5,7 +5,7 @@ div.dashboard {
 	flex-direction: column;
 	height: 100%;
 
-	.btn {width: 32px;height: 32px;cursor: pointer;text-align: center;color: #000;line-height: 32px;text-align: center;}
+	.btn {width: 32px;height: 32px;cursor: pointer;text-align: center;color: #000;line-height: 32px;}
 	a.btn:hover {text-decoration: none;}
 	.btn:before {font-family: "FontAwesome";font-weight: 100;}
 	.btn:hover {color: $color-main;}
@@ -18,6 +18,7 @@ div.dashboard {
 
 section.wrapper { flex-grow: 1; width: 100%; max-width: 800px; margin: 0 auto; background: #fff;}
 div.views-wrap {flex-grow: 1;margin-left: 200px;min-height: 100%;height: 100%;}
+h1 {font-weight: 600;margin-bottom: 16px;font-size: 16px;}
 
 @import "header";
 @import "sidebar";
@@ -28,4 +29,11 @@ div.views-wrap {flex-grow: 1;margin-left: 200px;min-height: 100%;height: 100%;}
 @import "confirmation";
 @import "views/list";
 @import "views/notepad";
+@import "views/settings";
 @import "views/password-generator";
+
+@media (prefers-color-scheme: dark) {
+	section.wrapper {background: #292A2D;}
+	h1 {color: #e8eaed;}
+	div.dashboard .btn {color: #8F9499;}
+}
