@@ -18,7 +18,7 @@ export default class Router {
 			response.route = route;
 			response.error = true;
 			response.exception = e;
-			console.error(response);
+			//console.error(response);
 		}
 
 		return response;

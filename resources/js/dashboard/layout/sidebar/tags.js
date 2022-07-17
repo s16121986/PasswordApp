@@ -90,7 +90,7 @@ export default class Tags {
 				html += '<div class="tag'
 					+ (filters.hasTag(tag.tag) ? ' selected' : '') + '"'
 					+ ' data-tag="' + tag.tag + '">'
-					+ tag.tag
+					+ '<span class="name">' + tag.tag + '</span>'
 					+ '<span class="count">' + tag.count + '</span>'
 					+ '</div>';
 			});

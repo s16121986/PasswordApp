@@ -25,6 +25,9 @@ sidebar > nav.bottom {
 sidebar > nav.tags {
 	line-height: 32px;flex-grow: 1;
 	div {padding: 0 16px 0 14px;cursor: pointer;border-left: 2px solid transparent;}
+	div.tag {display: flex;}
+	div.tag span.name {flex-grow: 1;}
+	div.tag span.count {color: #aaa;font-size: 11px;}
 	div.selected {border-left-color: $color-main;}
 	div:hover {background: #eee;}
 	div.flag {position: relative;}
@@ -32,12 +35,13 @@ sidebar > nav.tags {
 	div.favorite:before {content: fa-content($fa-var-bookmark);}
 	div.archive:before {content: fa-content($fa-var-box-archive);}
 	div.noTag:before {content: fa-content($fa-var-tag);}
-	div span {display: inline-block;vertical-align: top;margin-left: 8px;color: #aaa;font-size: 11px;}
 	div.edited {padding: 0;}
 	input {border: none;height: 32px;margin: 0;padding: 0 16px;vertical-align: top;width: 100%;}
 }
 
 @media (prefers-color-scheme: dark) {
+	sidebar {color: #e8eaed;}
 	sidebar > nav.bottom > div.item:hover,
-	sidebar > nav.tags div:hover {color: #fff;background: #3F4042;}
+	sidebar > nav.tags div:hover {background: #3F4042;}
+	sidebar > nav.tags div.tag span.count {}
 }

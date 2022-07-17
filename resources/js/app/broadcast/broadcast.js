@@ -11,7 +11,7 @@ export default class Broadcast {
 
 		if (response.error) {
 			this.lastError = response.exception;
-			console.error(response);
+			//console.error(response);
 			return null;
 		}
 

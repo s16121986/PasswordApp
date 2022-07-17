@@ -2,7 +2,7 @@ const handlers = {
 	findPassword: (clickData, tab) => {
 		chrome.scripting.executeScript({
 			target: {tabId: tab.id},
-			files: ['find-password/content.js']
+			files: ['js/find-password/content.js']
 		});
 	},
 	/*createSite: async (clickData, tab) => {
@@ -21,7 +21,7 @@ const handlers = {
 	generatePassword: (clickData, tab) => {
 		chrome.scripting.executeScript({
 			target: {tabId: tab.id},
-			files: ['generate-password/content.js']
+			files: ['js/generate-password/content.js']
 		});
 	}
 };
@@ -30,6 +30,8 @@ export default class Contextmenu {
 	constructor() {}
 
 	boot() {
+		chrome.contextMenus.removeAll();
+
 		chrome.contextMenus.create({
 			id: "main",
 			title: "Менеджер паролей",
