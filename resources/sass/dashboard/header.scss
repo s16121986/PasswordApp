@@ -6,9 +6,12 @@ div.dashboard header {
 	position: relative;
 	.wrap {width: 100%;max-width: 800px;margin: 0 auto;position: relative;display: flex;}
 	.logo {width: 200px;cursor: pointer;background: url("/images/logo.svg") 16px 50% no-repeat;}
-	.search {display: flex;flex-grow: 1;padding: 0 0 0 8px;border: 1px solid #ccc;background: #fff;border-radius: 3px;margin: 0 8px;}
+	.search {display: flex;flex-grow: 1;padding: 0 0 0 8px;border: 1px solid #ccc;background: #fff;border-radius: 3px;margin: 0 8px;position: relative;}
 	input {flex-grow: 1;height: 30px;padding: 0;margin-right: 8px;border: none;background: none;}
-	.btn {font-size: 16px;height: 30px;color: #fff;margin-right: 8px;}
+	.btn {font-size: 16px;height: 30px;color: #fff;}
+	.btn-menu {margin-right: 8px;}
+	.btn-clear {position: absolute;top: 0;right: 0;}
+	.btn-clear:before {content: fa-content($fa-var-xmark);}
 }
 div.dashboard header.expanded {padding-bottom: 0;}
 div.dashboard header:not(.expanded) div.tags {display: none;}

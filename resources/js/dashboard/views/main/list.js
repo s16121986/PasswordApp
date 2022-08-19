@@ -75,17 +75,18 @@ export default class List {
 
 	filter() {
 		const filters = app('filters');
+		const termFlag = !!filters.term;
 		const trueFn = () => true;
-		const isFavorite = filters.favorite
+		const isFavorite = !termFlag && filters.favorite
 			? m => m.isFavorite
 			: trueFn;
-		const isNoTag = filters.noTag
+		const isNoTag = !termFlag && filters.noTag
 			? m => m.tags.length === 0
 			: trueFn;
-		const isArchive = filters.archive
+		const isArchive = !termFlag && filters.archive
 			? trueFn
 			: m => !m.isArchive;
-		const hasTags = filters.tags.length > 0
+		const hasTags = !termFlag && filters.tags.length > 0
 			? m => {
 				const mtags = m.tags;
 				if (!mtags || mtags.length === 0)
@@ -93,7 +94,7 @@ export default class List {
 				return !filters.tags.find(tag => !mtags.includes(tag))
 			}
 			: trueFn;
-		const hasTerm = filters.term
+		const hasTerm = termFlag
 			? m => m.hasTerm(filters.term)
 			: trueFn;
 

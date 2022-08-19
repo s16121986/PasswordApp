@@ -15,10 +15,13 @@ export default class Header {
 			+ '<div class="logo"></div>'
 			+ '<div class="search">'
 			+ '<input type="text" autocomplete="off" placeholder="Быстрый поиск" value="' + (app('filters').term || '') + '" />'
+			+ '<div class="btn btn-clear"></div>'
 			+ '</div>'
 			+ '<div class="btn btn-menu" title="Главное меню"></div>'
 			+ '</div>'
 			+ '</header>');
+		const btnClear = el.find('div.btn-clear');
+		const input = el.find('input');
 
 		this.#el = el;
 
@@ -27,14 +30,15 @@ export default class Header {
 		el.find('input').bind('input', e => {
 			if (inputTimeout)
 				clearTimeout(inputTimeout);
-
 			inputTimeout = window.setTimeout(() => {
 				inputTimeout = undefined;
-				app('filters').term = el.find('input').val();
+				app('filters').term = input.val();
 				app('filters').store();
 				route('home');
 				app('dashboard').update();
 			}, 300);
+
+			btnClear[input.val() === '' ? 'hide' : 'show']();
 		});
 
 		el.find('div.btn-menu').click(e => {
@@ -43,6 +47,9 @@ export default class Header {
 		});
 
 		el.find('div.logo').click(e => { route('home'); });
+
+		btnClear[input.val() === '' ? 'hide' : 'show']()
+			.click(e => { input.val('').trigger('input'); });
 	}
 
 	get el() { return this.#el; }
